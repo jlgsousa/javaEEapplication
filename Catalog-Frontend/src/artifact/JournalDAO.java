@@ -1,0 +1,349 @@
+
+package artifact;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for journalDAO complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="journalDAO">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="authors" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="citationNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="conference" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="issue" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="journal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="pages" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="publisher" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="scholarArtic" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="volume" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "journalDAO", propOrder = {
+    "authors",
+    "citationNumber",
+    "conference",
+    "date",
+    "description",
+    "issue",
+    "journal",
+    "pages",
+    "publisher",
+    "scholarArtic",
+    "title",
+    "volume"
+})
+public class JournalDAO {
+
+    protected String authors;
+    protected int citationNumber;
+    protected String conference;
+    protected String date;
+    protected String description;
+    protected String issue;
+    protected String journal;
+    protected String pages;
+    protected String publisher;
+    protected String scholarArtic;
+    protected String title;
+    protected String volume;
+
+    /**
+     * Gets the value of the authors property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAuthors() {
+        return authors;
+    }
+
+    /**
+     * Sets the value of the authors property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAuthors(String value) {
+        this.authors = value;
+    }
+
+    /**
+     * Gets the value of the citationNumber property.
+     * 
+     */
+    public int getCitationNumber() {
+        return citationNumber;
+    }
+
+    /**
+     * Sets the value of the citationNumber property.
+     * 
+     */
+    public void setCitationNumber(int value) {
+        this.citationNumber = value;
+    }
+
+    /**
+     * Gets the value of the conference property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConference() {
+        return conference;
+    }
+
+    /**
+     * Sets the value of the conference property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConference(String value) {
+        this.conference = value;
+    }
+
+    /**
+     * Gets the value of the date property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * Sets the value of the date property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDate(String value) {
+        this.date = value;
+    }
+
+    /**
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescription(String value) {
+        this.description = value;
+    }
+
+    /**
+     * Gets the value of the issue property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIssue() {
+        return issue;
+    }
+
+    /**
+     * Sets the value of the issue property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIssue(String value) {
+        this.issue = value;
+    }
+
+    /**
+     * Gets the value of the journal property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getJournal() {
+        return journal;
+    }
+
+    /**
+     * Sets the value of the journal property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setJournal(String value) {
+        this.journal = value;
+    }
+
+    /**
+     * Gets the value of the pages property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPages() {
+        return pages;
+    }
+
+    /**
+     * Sets the value of the pages property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPages(String value) {
+        this.pages = value;
+    }
+
+    /**
+     * Gets the value of the publisher property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPublisher() {
+        return publisher;
+    }
+
+    /**
+     * Sets the value of the publisher property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPublisher(String value) {
+        this.publisher = value;
+    }
+
+    /**
+     * Gets the value of the scholarArtic property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getScholarArtic() {
+        return scholarArtic;
+    }
+
+    /**
+     * Sets the value of the scholarArtic property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setScholarArtic(String value) {
+        this.scholarArtic = value;
+    }
+
+    /**
+     * Gets the value of the title property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Sets the value of the title property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTitle(String value) {
+        this.title = value;
+    }
+
+    /**
+     * Gets the value of the volume property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getVolume() {
+        return volume;
+    }
+
+    /**
+     * Sets the value of the volume property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setVolume(String value) {
+        this.volume = value;
+    }
+
+}

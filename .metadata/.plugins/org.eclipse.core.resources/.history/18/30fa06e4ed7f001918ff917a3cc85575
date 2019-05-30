@@ -1,0 +1,20 @@
+package ejbs;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import dao.Student;
+
+public class MyEjb implements MyEjbRemote{
+	
+	@PersistenceContext(name = "CatalogPersistence")
+	private EntityManager em;
+
+	@Override
+	public void doSomething() {
+		Student s = new Student();
+		s.setName("Joe");
+		s.setPhone("918208301283");
+	}
+
+}

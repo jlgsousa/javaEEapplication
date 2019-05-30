@@ -1,0 +1,26 @@
+package ejbs;
+
+import java.util.Random;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import dao.Student;
+
+@Stateless
+public class MyEjb implements MyEjbRemote{
+	
+	@PersistenceContext(name = "CatalogPersistence")
+	private EntityManager em;
+
+	@Override
+	public void doSomething() {
+		Student s = new Student();
+		s.setName("Joe");
+		s.setPhone(Integer.toString(new Random().nextInt(10000)));
+		
+		em.persist(s);
+	}
+
+}

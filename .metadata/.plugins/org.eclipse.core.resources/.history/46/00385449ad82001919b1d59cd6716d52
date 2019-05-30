@@ -1,0 +1,32 @@
+package main;
+
+import dao.CitationChicagoDAO;
+import dao.JournalDAO;
+import ejbs.CitationBeanRemote;
+import ejbs.PubsMethodsRemote;
+
+import java.util.List;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+
+public class Client {
+
+    public static void main(String[] args) throws NamingException {
+    	
+	    CitationBeanRemote citationRemote = (CitationBeanRemote) InitialContext.doLookup("Citations-EJB/EJBServCit!ejbs.EJBServCitRemote");
+        PubsMethodsRemote journalRemote = (PubsMethodsRemote) InitialContext.doLookup("Journals-EJB/PubsMethods!ejbs.PubsMethodsRemote");
+        System.out.println("very impressive");
+
+	    List<CitationChicagoDAO> citacoesChicago = citationRemote.getCitationChicagoList("WSFAggressor: an extensible web service framework attacking tool");
+        JournalDAO pub = journalRemote.infoJournal("WSFAggressor: an extensible web service framework attacking tool");
+
+		for (CitationChicagoDAO cit : citacoesChicago) {
+			System.out.println("Date: " + cit.getCitationDate() + "\nText: " + cit.getCitationText());
+		}
+        System.out.println("\nTitle " + pub.getTitle() + "\nDescription: " + pub.getDescription());
+
+    }
+
+}

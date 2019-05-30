@@ -1,0 +1,18 @@
+package ejbs;
+
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class CitationBean
+ */
+@Stateless
+public class CitationBean implements CitationBeanRemote {
+
+    /**
+     * Default constructor. 
+     */
+    public CitationBean() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

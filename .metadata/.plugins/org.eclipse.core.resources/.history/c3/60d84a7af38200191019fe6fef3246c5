@@ -1,0 +1,292 @@
+package frontend;
+
+import artifact.JournalDAO;
+import artifact.JournalsWeb;
+import artifact.JournalsWebService;
+import dao.CitationChicagoDAO;
+import ejbs.EJBServCitRemote;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+@WebServlet("/FrontEnd")
+public class CatalogShower extends HttpServlet {
+
+    private static final Logger LOGGER = Logger.getLogger(CatalogShower.class.getName());
+
+    private static final long serialVersionUID = 1L;
+    private static final String VIEW = "/display.jsp";
+    private static final String VIEW2 = "/display2.jsp";
+
+    private JournalsWeb journalsWeb;
+    private String[] journalFields;
+
+    public FrontEnd() {
+        JournalsWebService journalsWebService = new JournalsWebService();
+        journalsWeb = journalsWebService.getJournalsWebPort();
+        journalFields = new String[]{"Title", "Authors", "Date", "Conference", "Journal", "Volume", "Issue",
+                "Pages", "Publisher", "Description", "Number of Citations", "Scholar Articles"};
+    }
+
+    private void onePubTitulo(HttpServletRequest request, String title) {
+        request.setAttribute(ATTRIBUTE.JOURNAL_TITLES.text, Collections.singletonList(title));
+    }
+
+    private void onePubFlag(HttpServletRequest request) {
+        request.setAttribute("flagNewPub", Collections.singletonList(0));
+    }
+
+    private List<String> allPubInfo(HttpServletRequest request, List<JournalDAO> journals, boolean ordered) {
+        List<String> journalsInfo = new ArrayList<>();
+        List<Integer> newJournalFlag = new ArrayList<>();
+
+        List<String> journalTitles = new ArrayList<>();
+
+        int flag = 0;
+
+        for (JournalDAO journal : journals) {
+            addJournalInfoTo(journalsInfo, journal);
+            newJournalFlag.add(flag);
+            flag = flag + 12;
+
+            if (ordered) {
+                journalTitles.add(journal.getTitle());
+            }
+        }
+
+        request.setAttribute("flagNewPub", newJournalFlag);
+        request.setAttribute(ATTRIBUTE.JOURNAL_INFO.text, journalsInfo);
+
+        if (ordered) {
+            request.setAttribute(ATTRIBUTE.JOURNAL_TITLES.text, journalTitles);
+        }
+
+        return journalTitles;
+    }
+
+    private void onePubInfo(HttpServletRequest request,JournalsWeb journalsWeb, String title) {
+        List<String> publicacoesInfo = new ArrayList<>();
+        JournalDAO pub = journalsWeb.infoJournal(title);
+
+        addJournalInfoTo(publicacoesInfo, pub);
+        request.setAttribute(ATTRIBUTE.JOURNAL_INFO.text, publicacoesInfo);
+    }
+
+    private void addJournalInfoTo(List<String> journalsInfo, JournalDAO journal) {
+        journalsInfo.add(journal.getTitle());
+        journalsInfo.add(journal.getAuthors());
+        journalsInfo.add(journal.getDate());
+        journalsInfo.add(journal.getConference());
+        journalsInfo.add(journal.getJournal());
+        journalsInfo.add(journal.getVolume());
+        journalsInfo.add(journal.getIssue());
+        journalsInfo.add(journal.getPages());
+        journalsInfo.add(journal.getPublisher());
+        journalsInfo.add(journal.getDescription() + "...");
+        journalsInfo.add("" + journal.getCitationNumber());
+        journalsInfo.add(journal.getScholarArtic());
+    }
+
+    private void handleCitations(HttpServletRequest request, List<String> journalTitles, String title, JOURNAL_OPTION option) {
+        try {
+            EJBServCitRemote ejbCit = InitialContext.doLookup("DemoEAR/Enterprise-Java-Beans/CitationBean!ejbs.CitationBeanRemote");
+
+            List<String> journalCitations = new ArrayList<>();
+
+            List<Integer> newCitationFlags = new ArrayList<>();
+            newCitationFlags.add(0);
+
+            if (JOURNAL_OPTION.UNIQUE == option) {
+                infoCitation(ejbCit, title, journalCitations, newCitationFlags);
+            } else if (JOURNAL_OPTION.ALL == option) {
+                for (String tituloActual : journalTitles) {
+                    infoCitation(ejbCit, tituloActual, journalCitations, newCitationFlags);
+                }
+            }
+
+            request.setAttribute("flagNewCit", newCitationFlags);
+            request.setAttribute(ATTRIBUTE.CITATIONS.text, journalCitations);
+
+        } catch (NamingException e) {
+            LOGGER.log(Level.WARNING, "Impossible to handle citations, please contact support");
+            e.printStackTrace();
+        }
+    }
+
+    private void infoCitation(CitationBeanRemote citationBean, String pubTitulo, List<String> publicationCitations, List<Integer> flagNovasCitacoes) {
+        List<CitationChicagoDAO> publicacoesCit = ejbCit.getCitationChicagoList(pubTitulo);
+
+        for (CitationChicagoDAO aPublicacoesCit : publicacoesCit) {
+            String citacao = aPublicacoesCit.getCitationText()
+                    + "<br/><span style='color: blue'>- Date: </span>" + aPublicacoesCit.getCitationDate();
+            publicationCitations.add(citacao);
+        }
+        flagNovasCitacoes.add(publicacoesCit.size());
+    }
+
+    // GET
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+
+        request.setAttribute(ATTRIBUTE.MY_JOURNAL_TITLES.text, journalsWeb.allTitles());
+        request.getRequestDispatcher(VIEW).forward(request, response);
+    }
+
+    // POST
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+
+        if (request.getParameter(ACTION.ACTION1.action) != null) {
+            request.setAttribute(ATTRIBUTE.OPERATION_DONE.text, "All publications, detailed info (without citations)");
+            request.setAttribute(ATTRIBUTE.INFO_OPTION.text, 2);
+            request.setAttribute(ATTRIBUTE.JOURNAL_TITLES.text, journalsWeb.allTitles());
+            request.setAttribute(ATTRIBUTE.JOURNAL_FIELDS.text, journalFields);
+
+            allPubInfo(request, journalsWeb.allJournals(), false);
+
+            request.getRequestDispatcher(VIEW2).forward(request, response);
+
+        } else if (request.getParameter(ACTION.ACTION2.action) != null & request.getParameter(ACTION.ACTION21.action) != null) {
+            request.setAttribute(ATTRIBUTE.OPERATION_DONE.text, "One publication, detailed info (without citations)");
+            request.setAttribute(ATTRIBUTE.INFO_OPTION.text, 2);
+
+            String title = request.getParameter(ACTION.ACTION2.action);
+            onePubTitulo(request, title);
+
+            request.setAttribute(ATTRIBUTE.JOURNAL_FIELDS.text, journalFields);
+
+            onePubFlag(request);
+
+            onePubInfo(request, journalsWeb, title);
+
+            request.getRequestDispatcher(VIEW2).forward(request, response);
+        } else if (request.getParameter(ACTION.ACTION3.action) != null & request.getParameter(ACTION.ACTION31.action) != null) {
+            request.setAttribute(ATTRIBUTE.OPERATION_DONE.text, "One publication, all citations");
+            request.setAttribute(ATTRIBUTE.INFO_OPTION.text, 1);
+
+            String title = request.getParameter(ACTION.ACTION3.action);
+            onePubTitulo(request, title);
+
+            request.setAttribute(ATTRIBUTE.JOURNAL_FIELDS.text, new String[]{"Title", "Number of Citations"});
+
+            onePubFlag(request);
+
+            List<String> journalsInfo = new ArrayList<>();
+            JournalDAO pub = journalsWeb.infoJournal(title);
+            journalsInfo.add(pub.getTitle());
+            journalsInfo.add("" + pub.getCitationNumber());
+
+            request.setAttribute(ATTRIBUTE.JOURNAL_INFO.text, journalsInfo);
+
+            handleCitations(request, null, title, JOURNAL_OPTION.UNIQUE);
+
+            request.getRequestDispatcher(VIEW2).forward(request, response);
+
+        } else if (request.getParameter(ACTION.ACTION4.action) != null) {
+            request.setAttribute(ATTRIBUTE.OPERATION_DONE.text, "All publications, all info");
+            request.setAttribute(ATTRIBUTE.INFO_OPTION.text, 1);
+            request.setAttribute(ATTRIBUTE.JOURNAL_TITLES.text, journalsWeb.allTitles());
+            request.setAttribute(ATTRIBUTE.JOURNAL_FIELDS.text, journalFields);
+
+            List<JournalDAO> journals = journalsWeb.allJournals();
+            allPubInfo(request, journals, false);
+            handleCitations(request, journalsWeb.allTitles(), "All Journals", JOURNAL_OPTION.ALL);
+
+            request.getRequestDispatcher(VIEW2).forward(request, response);
+
+        } else if (request.getParameter(ACTION.ACTION51.action) != null && request.getParameter(ACTION.ACTION52.action) != null
+                & request.getParameter(ACTION.ACTION53.action) != null) {
+            request.setAttribute(ATTRIBUTE.OPERATION_DONE.text, "All publications, all info, by attribute");
+            request.setAttribute(ATTRIBUTE.INFO_OPTION.text, 1);
+            request.setAttribute(ATTRIBUTE.JOURNAL_FIELDS.text, journalFields);
+
+            String chosenAttribute = request.getParameter(ACTION.ACTION51.action);
+            String chosenOrdered = request.getParameter(ACTION.ACTION52.action);
+
+            List<JournalDAO> publicacoesTudo = journalsWeb.allJournalsOrdered(chosenAttribute, chosenOrdered);
+            List<String> journalTitles = allPubInfo(request, publicacoesTudo, true);
+
+            handleCitations(request, journalTitles, "All Journals", JOURNAL_OPTION.ALL);
+
+            request.getRequestDispatcher(VIEW2).forward(request, response);
+
+        } else if (request.getParameter(ACTION.ACTION6.action) != null && request.getParameter(ACTION.ACTION61.action) != null) {
+            request.setAttribute(ATTRIBUTE.OPERATION_DONE.text, "One publication, all info");
+
+            request.setAttribute(ATTRIBUTE.INFO_OPTION.text, 1);
+
+            String title = request.getParameter(ACTION.ACTION6.action);
+            onePubTitulo(request, title);
+
+            request.setAttribute(ATTRIBUTE.JOURNAL_FIELDS.text, journalFields);
+
+            onePubFlag(request);
+
+            onePubInfo(request, journalsWeb, title);
+
+            handleCitations(request, journalsWeb.allTitles(), "One Journal", JOURNAL_OPTION.UNIQUE);
+
+            request.getRequestDispatcher("/display2.jsp").forward(request, response);
+        }
+    }
+
+    private enum ATTRIBUTE  {
+        JOURNAL_TITLES("journalTitles"),
+        JOURNAL_FIELDS("journalFields"),
+        MY_JOURNAL_TITLES("myListOfTitles"),
+        JOURNAL_INFO("journalInfo"),
+        CITATIONS("listCitations"),
+        OPERATION_DONE("operation_done"),
+        INFO_OPTION("infoOption");
+
+
+        private String text;
+
+        private ATTRIBUTE(String text) {
+            this.text = text;
+        }
+    }
+
+    private enum JOURNAL_OPTION {
+        UNIQUE("u"),
+        ALL("all");
+
+        private String option;
+
+        private JOURNAL_OPTION(String option) {
+            this.option = option;
+        }
+    }
+
+    private enum ACTION {
+        ACTION1("action1"),
+        ACTION2("action2"),
+        ACTION3("action3"),
+        ACTION4("action4"),
+        ACTION6("action6"),
+        ACTION21("action21"),
+        ACTION31("action31"),
+        ACTION51("action51"),
+        ACTION52("action52"),
+        ACTION53("action53"),
+        ACTION61("action61");
+
+        private String action;
+
+        private ACTION(String action) {
+            this.action = action;
+        }
+    }
+}

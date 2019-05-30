@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="DemoEAR">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="Enterprise-Java-Beans.jar" deploy-path="/" handle="module:/resource/Enterprise-Java-Beans/Enterprise-Java-Beans">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="catalog-loader2.jar" deploy-path="/lib" handle="module:/resource/catalog-loader2/catalog-loader2">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Journals-WS.war" deploy-path="/" handle="module:/resource/Journals-WS/Journals-WS">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

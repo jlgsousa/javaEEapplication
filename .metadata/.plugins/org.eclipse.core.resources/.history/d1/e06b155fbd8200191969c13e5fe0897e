@@ -1,0 +1,75 @@
+package dao;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "citationChicagoDB")
+public class CitationChicagoDAO implements Serializable {
+
+	private static final long serialVersionUID = 3L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ChicagoID")
+	private Long id;
+	private String citationText;
+	private int citationDate;
+
+	public CitationChicagoDAO() {
+	}
+
+	public CitationChicagoDAO(Long id, String citationText, int citationDate) {
+		this.id = id;
+		this.citationText = citationText;
+		this.citationDate = citationDate;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCitationText() {
+		return citationText;
+	}
+
+	public void setCitationText(String citationText) {
+		this.citationText = citationText;
+	}
+
+	public int getCitationDate() {
+		return citationDate;
+	}
+
+	public void setCitationDate(int citationDate) {
+		this.citationDate = citationDate;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof CitationChicagoDAO)) {
+			return false;
+		}
+		CitationChicagoDAO other = (CitationChicagoDAO) object;
+		return (this.id != null || other.id == null)
+				&& (this.id == null || this.id.equals(other.id));
+	}
+
+	@Override
+	public String toString() {
+		return "CitationDAO Chicago '" + id + "':\n" + citationText + "\n" + citationDate;
+	}
+}

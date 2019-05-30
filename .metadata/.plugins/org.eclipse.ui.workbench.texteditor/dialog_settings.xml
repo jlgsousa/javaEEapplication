@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="Search" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="do it!"/>
+			<item value="do it"/>
+			<item value="flagnewcit"/>
+			<item value="OPERATION_DONE"/>
+			<item value="view2"/>
+			<item value="flagNewPub"/>
+			<item value="info"/>
+			<item value="CitationChicagoDAO"/>
+		</list>
+		<list key="replacehistory">
+			<item value="Search"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="269" key="DIALOG_WIDTH"/>
+		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
+		<item value="398" key="DIALOG_HEIGHT"/>
+		<item value="956" key="DIALOG_X_ORIGIN"/>
+		<item value="322" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

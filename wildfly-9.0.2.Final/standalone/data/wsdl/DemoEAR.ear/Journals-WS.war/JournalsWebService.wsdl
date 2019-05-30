@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="JournalsWebService" targetNamespace="http://ws/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws/" elementFormDefault="unqualified" targetNamespace="http://ws/" version="1.0">
+
+  <xs:element name="getAllJournals" type="tns:getAllJournals"/>
+
+  <xs:element name="getAllJournalsResponse" type="tns:getAllJournalsResponse"/>
+
+  <xs:element name="getInfoFromJournal" type="tns:getInfoFromJournal"/>
+
+  <xs:element name="getInfoFromJournalResponse" type="tns:getInfoFromJournalResponse"/>
+
+  <xs:element name="getOrderedJournals" type="tns:getOrderedJournals"/>
+
+  <xs:element name="getOrderedJournalsResponse" type="tns:getOrderedJournalsResponse"/>
+
+  <xs:element name="getTitles" type="tns:getTitles"/>
+
+  <xs:element name="getTitlesResponse" type="tns:getTitlesResponse"/>
+
+  <xs:complexType name="getAllJournals">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllJournalsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:journalDAO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="journalDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="authors" type="xs:string"/>
+      <xs:element name="citationNumber" type="xs:int"/>
+      <xs:element minOccurs="0" name="conference" type="xs:string"/>
+      <xs:element minOccurs="0" name="date" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="issue" type="xs:string"/>
+      <xs:element minOccurs="0" name="journal" type="xs:string"/>
+      <xs:element minOccurs="0" name="pages" type="xs:string"/>
+      <xs:element minOccurs="0" name="publisher" type="xs:string"/>
+      <xs:element minOccurs="0" name="scholarArtic" type="xs:string"/>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+      <xs:element minOccurs="0" name="volume" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getInfoFromJournal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getInfoFromJournalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:journalDAO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOrderedJournals">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOrderedJournalsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:journalDAO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTitles">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getTitlesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getInfoFromJournalResponse">
+    <wsdl:part element="tns:getInfoFromJournalResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllJournals">
+    <wsdl:part element="tns:getAllJournals" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInfoFromJournal">
+    <wsdl:part element="tns:getInfoFromJournal" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOrderedJournals">
+    <wsdl:part element="tns:getOrderedJournals" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitles">
+    <wsdl:part element="tns:getTitles" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllJournalsResponse">
+    <wsdl:part element="tns:getAllJournalsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitlesResponse">
+    <wsdl:part element="tns:getTitlesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOrderedJournalsResponse">
+    <wsdl:part element="tns:getOrderedJournalsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="JournalsWeb">
+    <wsdl:operation name="getAllJournals">
+      <wsdl:input message="tns:getAllJournals" name="getAllJournals">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllJournalsResponse" name="getAllJournalsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoFromJournal">
+      <wsdl:input message="tns:getInfoFromJournal" name="getInfoFromJournal">
+    </wsdl:input>
+      <wsdl:output message="tns:getInfoFromJournalResponse" name="getInfoFromJournalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderedJournals">
+      <wsdl:input message="tns:getOrderedJournals" name="getOrderedJournals">
+    </wsdl:input>
+      <wsdl:output message="tns:getOrderedJournalsResponse" name="getOrderedJournalsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitles">
+      <wsdl:input message="tns:getTitles" name="getTitles">
+    </wsdl:input>
+      <wsdl:output message="tns:getTitlesResponse" name="getTitlesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JournalsWebServiceSoapBinding" type="tns:JournalsWeb">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAllJournals">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllJournals">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllJournalsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoFromJournal">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInfoFromJournal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInfoFromJournalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderedJournals">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getOrderedJournals">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOrderedJournalsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitles">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTitles">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTitlesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JournalsWebService">
+    <wsdl:port binding="tns:JournalsWebServiceSoapBinding" name="JournalsWebPort">
+      <soap:address location="http://localhost:8080/Journals-WS/JournalsWeb"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

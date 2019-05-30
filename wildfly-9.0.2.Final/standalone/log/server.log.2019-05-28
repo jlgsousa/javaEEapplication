@@ -1,0 +1,179 @@
+2019-05-28 21:09:01,612 INFO  [org.jboss.modules] (main) JBoss Modules version 1.4.3.Final
+2019-05-28 21:09:01,960 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.6.Final
+2019-05-28 21:09:02,080 INFO  [org.jboss.as] (MSC service thread 1-6) WFLYSRV0049: WildFly Full 9.0.2.Final (WildFly Core 1.0.2.Final) starting
+2019-05-28 21:09:02,082 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
+	[Standalone] = 
+	awt.toolkit = sun.lwawt.macosx.LWCToolkit
+	file.encoding = UTF-8
+	file.encoding.pkg = sun.io
+	file.separator = /
+	ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	gopherProxySet = false
+	http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	java.awt.graphicsenv = sun.awt.CGraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.lwawt.macosx.CPrinterJob
+	java.class.path = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/jboss-modules.jar
+	java.class.version = 52.0
+	java.endorsed.dirs = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/endorsed
+	java.ext.dirs = /Users/joaosousa/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+	java.home = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre
+	java.io.tmpdir = /var/folders/9w/s6xl6fcd0xgd69gg9v4b2lz00000gn/T/
+	java.library.path = /Users/joaosousa/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.8.0_111-b14
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.8
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.8.0_111
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.8
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 25.111-b14
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	javax.xml.datatype.DatatypeFactory = __redirected.__DatatypeFactory
+	javax.xml.parsers.DocumentBuilderFactory = __redirected.__DocumentBuilderFactory
+	javax.xml.parsers.SAXParserFactory = __redirected.__SAXParserFactory
+	javax.xml.stream.XMLEventFactory = __redirected.__XMLEventFactory
+	javax.xml.stream.XMLInputFactory = __redirected.__XMLInputFactory
+	javax.xml.stream.XMLOutputFactory = __redirected.__XMLOutputFactory
+	javax.xml.transform.TransformerFactory = __redirected.__TransformerFactory
+	javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema = __redirected.__SchemaFactory
+	javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom = __redirected.__XPathFactory
+	jboss.home.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final
+	jboss.host.name = pci
+	jboss.modules.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = pci
+	jboss.qualified.host.name = pci.fritz.box
+	jboss.server.base.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone
+	jboss.server.config.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration
+	jboss.server.data.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data
+	jboss.server.deploy.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content
+	jboss.server.log.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log
+	jboss.server.name = pci
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/tmp
+	line.separator = 
+
+	logging.configuration = file:/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration/logging.properties
+	module.path = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules
+	org.jboss.boot.log.file = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log/server.log
+	org.jboss.resolver.warning = true
+	org.xml.sax.driver = __redirected.__XMLReaderFactory
+	os.arch = x86_64
+	os.name = Mac OS X
+	os.version = 10.14.5
+	path.separator = :
+	socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	sun.arch.data.model = 64
+	sun.boot.class.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/classes
+	sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib
+	sun.cpu.endian = little
+	sun.cpu.isalist = 
+	sun.io.unicode.encoding = UnicodeBig
+	sun.java.command = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/jboss-modules.jar -mp /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules org.jboss.as.standalone -Djboss.home.dir=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final -Djboss.server.base.dir=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = UTF-8
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = unknown
+	user.country = US
+	user.country.format = DE
+	user.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/bin
+	user.home = /Users/joaosousa
+	user.language = en
+	user.name = joaosousa
+	user.timezone = Europe/Berlin
+2019-05-28 21:09:02,083 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -D[Standalone] -XX:+UseCompressedOops -XX:+UseCompressedOops -Xms64m -Xmx512m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Dorg.jboss.boot.log.file=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log/server.log -Dlogging.configuration=file:/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration/logging.properties 
+2019-05-28 21:09:03,772 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 21) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=ExampleDS' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-28 21:09:03,775 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 6) WFLYCTL0028: Attribute 'job-repository-type' in the resource at address '/subsystem=batch' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-28 21:09:03,784 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 21) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=postgresDS' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-28 21:09:03,883 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2019-05-28 21:09:03,922 INFO  [org.xnio] (MSC service thread 1-3) XNIO version 3.3.1.Final
+2019-05-28 21:09:03,938 INFO  [org.xnio.nio] (MSC service thread 1-3) XNIO NIO Implementation Version 3.3.1.Final
+2019-05-28 21:09:03,993 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 37) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+2019-05-28 21:09:03,999 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 38) WFLYCLINF0001: Activating Infinispan subsystem.
+2019-05-28 21:09:04,021 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+2019-05-28 21:09:04,041 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.1)
+2019-05-28 21:09:04,047 INFO  [org.jboss.remoting] (MSC service thread 1-3) JBoss Remoting version 4.0.9.Final
+2019-05-28 21:09:04,095 INFO  [org.jboss.as.connector] (MSC service thread 1-8) WFLYJCA0009: Starting JCA Subsystem (IronJacamar 1.2.5.Final)
+2019-05-28 21:09:04,102 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) WFLYJCA0018: Started Driver service with driver-name = postgresql
+2019-05-28 21:09:04,102 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0018: Started Driver service with driver-name = h2
+2019-05-28 21:09:04,163 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 44) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2019-05-28 21:09:04,189 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 46) WFLYNAM0001: Activating Naming Subsystem
+2019-05-28 21:09:04,213 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 53) WFLYSEC0002: Activating Security Subsystem
+2019-05-28 21:09:04,213 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 54) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+2019-05-28 21:09:04,219 INFO  [org.jboss.as.security] (MSC service thread 1-2) WFLYSEC0001: Current PicketBox version=4.9.2.Final
+2019-05-28 21:09:04,231 INFO  [org.jboss.as.naming] (MSC service thread 1-1) WFLYNAM0003: Starting Naming Service
+2019-05-28 21:09:04,233 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-1) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2019-05-28 21:09:04,365 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 56) WFLYWS0002: Activating WebServices Extension
+2019-05-28 21:09:04,389 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0003: Undertow 1.2.9.Final starting
+2019-05-28 21:09:04,389 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) WFLYUT0003: Undertow 1.2.9.Final starting
+2019-05-28 21:09:04,450 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) WFLYUT0014: Creating file handler for path /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/welcome-content
+2019-05-28 21:09:04,463 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) WFLYUT0012: Started server default-server.
+2019-05-28 21:09:04,481 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0018: Host default-host starting
+2019-05-28 21:09:04,668 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0006: Undertow HTTP listener default listening on /127.0.0.1:8080
+2019-05-28 21:09:04,887 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0001: Bound data source [java:jboss/datasources/postgresDS]
+2019-05-28 21:09:04,888 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+2019-05-28 21:09:04,982 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) WFLYDS0013: Started FileSystemDeploymentService for directory /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/deployments
+2019-05-28 21:09:04,994 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) WFLYSRV0027: Starting deployment of "SimpleEjb.jar" (runtime-name: "SimpleEjb.jar")
+2019-05-28 21:09:05,235 INFO  [org.jboss.ws.common.management] (MSC service thread 1-4) JBWS022052: Starting JBoss Web Services - Stack CXF Server 5.0.0.Final
+2019-05-28 21:09:05,335 INFO  [org.jboss.as.jpa] (MSC service thread 1-4) WFLYJPA0002: Read persistence.xml for CatalogPersistence
+2019-05-28 21:09:05,434 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 58) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'SimpleEjb.jar#CatalogPersistence'
+2019-05-28 21:09:05,452 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 58) HHH000204: Processing PersistenceUnitInfo [
+	name: CatalogPersistence
+	...]
+2019-05-28 21:09:05,495 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) WFLYWELD0003: Processing weld deployment SimpleEjb.jar
+2019-05-28 21:09:05,608 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 58) HHH000412: Hibernate Core {4.3.10.Final}
+2019-05-28 21:09:05,612 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 58) HHH000206: hibernate.properties not found
+2019-05-28 21:09:05,614 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-7) HV000001: Hibernate Validator 5.1.3.Final
+2019-05-28 21:09:05,615 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 58) HHH000021: Bytecode provider name : javassist
+2019-05-28 21:09:05,793 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-7) JNDI bindings for session bean named MyEjb in deployment unit deployment "SimpleEjb.jar" are as follows:
+
+	java:global/SimpleEjb/MyEjb!ejbs.MyEjbRemote
+	java:app/SimpleEjb/MyEjb!ejbs.MyEjbRemote
+	java:module/MyEjb!ejbs.MyEjbRemote
+	java:jboss/exported/SimpleEjb/MyEjb!ejbs.MyEjbRemote
+	java:global/SimpleEjb/MyEjb
+	java:app/SimpleEjb/MyEjb
+	java:module/MyEjb
+
+2019-05-28 21:09:05,793 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-7) JNDI bindings for session bean named AddBean in deployment unit deployment "SimpleEjb.jar" are as follows:
+
+	java:global/SimpleEjb/AddBean!ejbs.AddBeanRemote
+	java:app/SimpleEjb/AddBean!ejbs.AddBeanRemote
+	java:module/AddBean!ejbs.AddBeanRemote
+	java:jboss/exported/SimpleEjb/AddBean!ejbs.AddBeanRemote
+	java:global/SimpleEjb/AddBean
+	java:app/SimpleEjb/AddBean
+	java:module/AddBean
+
+2019-05-28 21:09:06,023 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) WFLYWELD0006: Starting Services for CDI deployment: SimpleEjb.jar
+2019-05-28 21:09:06,080 INFO  [org.jboss.weld.Version] (MSC service thread 1-7) WELD-000900: 2.2.16 (SP1)
+2019-05-28 21:09:06,113 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) WFLYWELD0009: Starting weld service for deployment SimpleEjb.jar
+2019-05-28 21:09:06,457 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 58) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'SimpleEjb.jar#CatalogPersistence'
+2019-05-28 21:09:06,860 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 58) HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2019-05-28 21:09:07,192 WARN  [org.jboss.jca.core.connectionmanager.pool.strategy.OnePool] (ServerService Thread Pool -- 58) IJ000407: No lazy enlistment available for postgresDS
+2019-05-28 21:09:07,441 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 58) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-05-28 21:09:07,455 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 58) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2019-05-28 21:09:07,613 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 58) HHH000397: Using ASTQueryTranslatorFactory
+2019-05-28 21:09:08,019 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 58) HHH000228: Running hbm2ddl schema update
+2019-05-28 21:09:08,019 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 58) HHH000102: Fetching database metadata
+2019-05-28 21:09:08,074 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 58) HHH000396: Updating schema
+2019-05-28 21:09:08,249 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 58) HHH000261: Table found: public.students_table
+2019-05-28 21:09:08,249 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 58) HHH000037: Columns: [studentid, phone, name]
+2019-05-28 21:09:08,249 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 58) HHH000108: Foreign keys: []
+2019-05-28 21:09:08,250 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 58) HHH000126: Indexes: [students_table_pkey]
+2019-05-28 21:09:08,251 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 58) HHH000232: Schema update complete
+2019-05-28 21:09:09,045 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 34) WFLYSRV0010: Deployed "SimpleEjb.jar" (runtime-name : "SimpleEjb.jar")
+2019-05-28 21:09:09,221 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+2019-05-28 21:09:09,222 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+2019-05-28 21:09:09,222 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 9.0.2.Final (WildFly Core 1.0.2.Final) started in 8127ms - Started 329 of 502 services (218 services are lazy, passive or on-demand)

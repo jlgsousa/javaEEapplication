@@ -1,0 +1,919 @@
+2019-05-29 20:39:33,205 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0001: Content added at location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/2d/228572007646617832b045591ebe0a7a721810/content
+2019-05-29 20:39:33,295 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0027: Starting deployment of "EJB-Journals-1.0-SNAPSHOT.jar" (runtime-name: "EJB-Journals-1.0-SNAPSHOT.jar")
+2019-05-29 20:39:33,441 INFO  [org.jboss.as.jpa] (MSC service thread 1-4) WFLYJPA0002: Read persistence.xml for TestPersistence
+2019-05-29 20:39:33,523 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 62) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'EJB-Journals-1.0-SNAPSHOT.jar#TestPersistence'
+2019-05-29 20:39:33,524 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 62) HHH000204: Processing PersistenceUnitInfo [
+	name: TestPersistence
+	...]
+2019-05-29 20:39:33,584 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-1) MSC000001: Failed to start service jboss.deployment.unit."EJB-Journals-1.0-SNAPSHOT.jar".POST_MODULE: org.jboss.msc.service.StartException in service jboss.deployment.unit."EJB-Journals-1.0-SNAPSHOT.jar".POST_MODULE: WFLYSRV0153: Failed to process phase POST_MODULE of deployment "EJB-Journals-1.0-SNAPSHOT.jar"
+	at org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:163)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1948)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1881)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.RuntimeException: WFLYSRV0177: Error getting reflective information for class ejbs.PubsMethods with ClassLoader ModuleClassLoader for Module "deployment.EJB-Journals-1.0-SNAPSHOT.jar:main" from Service Module Loader
+	at org.jboss.as.server.deployment.reflect.DeploymentReflectionIndex.getClassIndex(DeploymentReflectionIndex.java:70)
+	at org.jboss.as.ee.metadata.MethodAnnotationAggregator.runtimeAnnotationInformation(MethodAnnotationAggregator.java:57)
+	at org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.handleAnnotations(InterceptorAnnotationProcessor.java:107)
+	at org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:92)
+	at org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:77)
+	at org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:156)
+	... 5 more
+Caused by: java.lang.NoClassDefFoundError: dao/JournalDAO
+	at java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701)
+	at java.lang.Class.getDeclaredMethods(Class.java:1975)
+	at org.jboss.as.server.deployment.reflect.ClassReflectionIndex.<init>(ClassReflectionIndex.java:65)
+	at org.jboss.as.server.deployment.reflect.DeploymentReflectionIndex.getClassIndex(DeploymentReflectionIndex.java:66)
+	... 10 more
+Caused by: java.lang.ClassNotFoundException: dao.JournalDAO from [Module "deployment.EJB-Journals-1.0-SNAPSHOT.jar:main" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:205)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:455)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassChecked(ConcurrentClassLoader.java:404)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:385)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:130)
+	... 15 more
+
+2019-05-29 20:39:33,594 ERROR [org.jboss.as.controller.management-operation] (DeploymentScanner-threads - 2) WFLYCTL0013: Operation ("deploy") failed - address: ([("deployment" => "EJB-Journals-1.0-SNAPSHOT.jar")]) - failure description: {"WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"EJB-Journals-1.0-SNAPSHOT.jar\".POST_MODULE" => "org.jboss.msc.service.StartException in service jboss.deployment.unit.\"EJB-Journals-1.0-SNAPSHOT.jar\".POST_MODULE: WFLYSRV0153: Failed to process phase POST_MODULE of deployment \"EJB-Journals-1.0-SNAPSHOT.jar\"
+    Caused by: java.lang.RuntimeException: WFLYSRV0177: Error getting reflective information for class ejbs.PubsMethods with ClassLoader ModuleClassLoader for Module \"deployment.EJB-Journals-1.0-SNAPSHOT.jar:main\" from Service Module Loader
+    Caused by: java.lang.NoClassDefFoundError: dao/JournalDAO
+    Caused by: java.lang.ClassNotFoundException: dao.JournalDAO from [Module \"deployment.EJB-Journals-1.0-SNAPSHOT.jar:main\" from Service Module Loader]"}}
+2019-05-29 20:39:33,760 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) WFLYSRV0010: Deployed "EJB-Journals-1.0-SNAPSHOT.jar" (runtime-name : "EJB-Journals-1.0-SNAPSHOT.jar")
+2019-05-29 20:39:33,763 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 2) WFLYCTL0183: Service status report
+WFLYCTL0186:   Services which failed to start:      service jboss.deployment.unit."EJB-Journals-1.0-SNAPSHOT.jar".POST_MODULE: org.jboss.msc.service.StartException in service jboss.deployment.unit."EJB-Journals-1.0-SNAPSHOT.jar".POST_MODULE: WFLYSRV0153: Failed to process phase POST_MODULE of deployment "EJB-Journals-1.0-SNAPSHOT.jar"
+
+2019-05-29 20:45:49,640 INFO  [org.jboss.as.server] (Thread-2) WFLYSRV0220: Server shutdown has been requested.
+2019-05-29 20:45:49,916 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0019: Host default-host stopping
+2019-05-29 20:45:49,925 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 65) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'EJB-Journals-1.0-SNAPSHOT.jar#TestPersistence'
+2019-05-29 20:45:50,003 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0028: Stopped deployment EJB-Journals-1.0-SNAPSHOT.jar (runtime-name: EJB-Journals-1.0-SNAPSHOT.jar) in 246ms
+2019-05-29 20:45:50,123 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-4) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
+2019-05-29 20:45:50,123 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 65) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'SimpleEjb.jar#CatalogPersistence'
+2019-05-29 20:45:50,134 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0019: Stopped Driver service with driver-name = h2
+2019-05-29 20:45:50,152 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) WFLYWELD0010: Stopping weld service for deployment SimpleEjb.jar
+2019-05-29 20:45:50,152 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 65) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'SimpleEjb.jar#CatalogPersistence'
+2019-05-29 20:45:50,153 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) WFLYJCA0010: Unbound data source [java:jboss/datasources/postgresDS]
+2019-05-29 20:45:50,157 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0019: Stopped Driver service with driver-name = postgresql
+2019-05-29 20:45:50,208 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment SimpleEjb.jar (runtime-name: SimpleEjb.jar) in 498ms
+2019-05-29 20:45:50,209 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0008: Undertow HTTP listener default suspending
+2019-05-29 20:45:50,210 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0007: Undertow HTTP listener default stopped, was bound to /127.0.0.1:8080
+2019-05-29 20:45:50,214 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0004: Undertow 1.2.9.Final stopping
+2019-05-29 20:45:50,227 INFO  [org.jboss.as] (MSC service thread 1-2) WFLYSRV0050: WildFly Full 9.0.2.Final (WildFly Core 1.0.2.Final) stopped in 417ms
+2019-05-29 20:45:52,635 INFO  [org.jboss.modules] (main) JBoss Modules version 1.4.3.Final
+2019-05-29 20:45:53,326 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.6.Final
+2019-05-29 20:45:53,470 INFO  [org.jboss.as] (MSC service thread 1-6) WFLYSRV0049: WildFly Full 9.0.2.Final (WildFly Core 1.0.2.Final) starting
+2019-05-29 20:45:53,473 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
+	[Standalone] = 
+	awt.toolkit = sun.lwawt.macosx.LWCToolkit
+	file.encoding = UTF-8
+	file.encoding.pkg = sun.io
+	file.separator = /
+	ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	gopherProxySet = false
+	http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	java.awt.graphicsenv = sun.awt.CGraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.lwawt.macosx.CPrinterJob
+	java.class.path = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/jboss-modules.jar
+	java.class.version = 52.0
+	java.endorsed.dirs = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/endorsed
+	java.ext.dirs = /Users/joaosousa/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+	java.home = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre
+	java.io.tmpdir = /var/folders/9w/s6xl6fcd0xgd69gg9v4b2lz00000gn/T/
+	java.library.path = /Users/joaosousa/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.8.0_111-b14
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.8
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.8.0_111
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.8
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 25.111-b14
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	javax.xml.datatype.DatatypeFactory = __redirected.__DatatypeFactory
+	javax.xml.parsers.DocumentBuilderFactory = __redirected.__DocumentBuilderFactory
+	javax.xml.parsers.SAXParserFactory = __redirected.__SAXParserFactory
+	javax.xml.stream.XMLEventFactory = __redirected.__XMLEventFactory
+	javax.xml.stream.XMLInputFactory = __redirected.__XMLInputFactory
+	javax.xml.stream.XMLOutputFactory = __redirected.__XMLOutputFactory
+	javax.xml.transform.TransformerFactory = __redirected.__TransformerFactory
+	javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema = __redirected.__SchemaFactory
+	javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom = __redirected.__XPathFactory
+	jboss.home.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final
+	jboss.host.name = pci
+	jboss.modules.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = pci
+	jboss.qualified.host.name = pci.fritz.box
+	jboss.server.base.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone
+	jboss.server.config.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration
+	jboss.server.data.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data
+	jboss.server.deploy.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content
+	jboss.server.log.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log
+	jboss.server.name = pci
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/tmp
+	line.separator = 
+
+	logging.configuration = file:/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration/logging.properties
+	module.path = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules
+	org.jboss.boot.log.file = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log/server.log
+	org.jboss.resolver.warning = true
+	org.xml.sax.driver = __redirected.__XMLReaderFactory
+	os.arch = x86_64
+	os.name = Mac OS X
+	os.version = 10.14.5
+	path.separator = :
+	socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	sun.arch.data.model = 64
+	sun.boot.class.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/classes
+	sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib
+	sun.cpu.endian = little
+	sun.cpu.isalist = 
+	sun.io.unicode.encoding = UnicodeBig
+	sun.java.command = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/jboss-modules.jar -mp /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules org.jboss.as.standalone -Djboss.home.dir=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final -Djboss.server.base.dir=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = UTF-8
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = unknown
+	user.country = US
+	user.country.format = DE
+	user.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/bin
+	user.home = /Users/joaosousa
+	user.language = en
+	user.name = joaosousa
+	user.timezone = Europe/Berlin
+2019-05-29 20:45:53,476 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -D[Standalone] -XX:+UseCompressedOops -XX:+UseCompressedOops -Xms64m -Xmx512m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Dorg.jboss.boot.log.file=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log/server.log -Dlogging.configuration=file:/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration/logging.properties 
+2019-05-29 20:45:55,378 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 12) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=ExampleDS' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-29 20:45:55,385 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 12) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=postgresDS' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-29 20:45:55,392 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 20) WFLYCTL0028: Attribute 'job-repository-type' in the resource at address '/subsystem=batch' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-29 20:45:55,499 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2019-05-29 20:45:55,541 INFO  [org.xnio] (MSC service thread 1-2) XNIO version 3.3.1.Final
+2019-05-29 20:45:55,562 INFO  [org.xnio.nio] (MSC service thread 1-2) XNIO NIO Implementation Version 3.3.1.Final
+2019-05-29 20:45:55,622 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 37) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+2019-05-29 20:45:55,625 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 38) WFLYCLINF0001: Activating Infinispan subsystem.
+2019-05-29 20:45:55,675 INFO  [org.jboss.as.connector] (MSC service thread 1-1) WFLYJCA0009: Starting JCA Subsystem (IronJacamar 1.2.5.Final)
+2019-05-29 20:45:55,744 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 44) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2019-05-29 20:45:55,771 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+2019-05-29 20:45:55,786 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0018: Started Driver service with driver-name = h2
+2019-05-29 20:45:55,799 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.1)
+2019-05-29 20:45:55,801 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = postgresql
+2019-05-29 20:45:55,855 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 46) WFLYNAM0001: Activating Naming Subsystem
+2019-05-29 20:45:55,882 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-5) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2019-05-29 20:45:55,886 INFO  [org.jboss.remoting] (MSC service thread 1-6) JBoss Remoting version 4.0.9.Final
+2019-05-29 20:45:55,891 INFO  [org.jboss.as.naming] (MSC service thread 1-7) WFLYNAM0003: Starting Naming Service
+2019-05-29 20:45:55,899 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 53) WFLYSEC0002: Activating Security Subsystem
+2019-05-29 20:45:55,899 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 54) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+2019-05-29 20:45:56,089 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 56) WFLYWS0002: Activating WebServices Extension
+2019-05-29 20:45:56,134 INFO  [org.jboss.as.security] (MSC service thread 1-2) WFLYSEC0001: Current PicketBox version=4.9.2.Final
+2019-05-29 20:45:56,157 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) WFLYUT0003: Undertow 1.2.9.Final starting
+2019-05-29 20:45:56,157 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0003: Undertow 1.2.9.Final starting
+2019-05-29 20:45:56,424 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) WFLYUT0014: Creating file handler for path /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/welcome-content
+2019-05-29 20:45:56,445 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0012: Started server default-server.
+2019-05-29 20:45:56,472 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0018: Host default-host starting
+2019-05-29 20:45:56,603 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0006: Undertow HTTP listener default listening on /127.0.0.1:8080
+2019-05-29 20:45:56,737 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) WFLYJCA0001: Bound data source [java:jboss/datasources/postgresDS]
+2019-05-29 20:45:56,738 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+2019-05-29 20:45:56,874 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) WFLYDS0013: Started FileSystemDeploymentService for directory /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/deployments
+2019-05-29 20:45:56,915 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0027: Starting deployment of "SimpleEjb.jar" (runtime-name: "SimpleEjb.jar")
+2019-05-29 20:45:57,127 INFO  [org.jboss.ws.common.management] (MSC service thread 1-3) JBWS022052: Starting JBoss Web Services - Stack CXF Server 5.0.0.Final
+2019-05-29 20:45:57,278 INFO  [org.jboss.as.jpa] (MSC service thread 1-3) WFLYJPA0002: Read persistence.xml for CatalogPersistence
+2019-05-29 20:45:57,380 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 58) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'SimpleEjb.jar#CatalogPersistence'
+2019-05-29 20:45:57,402 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 58) HHH000204: Processing PersistenceUnitInfo [
+	name: CatalogPersistence
+	...]
+2019-05-29 20:45:57,440 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) WFLYWELD0003: Processing weld deployment SimpleEjb.jar
+2019-05-29 20:45:57,557 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 58) HHH000412: Hibernate Core {4.3.10.Final}
+2019-05-29 20:45:57,561 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 58) HHH000206: hibernate.properties not found
+2019-05-29 20:45:57,565 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 58) HHH000021: Bytecode provider name : javassist
+2019-05-29 20:45:57,581 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-1) HV000001: Hibernate Validator 5.1.3.Final
+2019-05-29 20:45:57,740 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named MyEjb in deployment unit deployment "SimpleEjb.jar" are as follows:
+
+	java:global/SimpleEjb/MyEjb!ejbs.MyEjbRemote
+	java:app/SimpleEjb/MyEjb!ejbs.MyEjbRemote
+	java:module/MyEjb!ejbs.MyEjbRemote
+	java:jboss/exported/SimpleEjb/MyEjb!ejbs.MyEjbRemote
+	java:global/SimpleEjb/MyEjb
+	java:app/SimpleEjb/MyEjb
+	java:module/MyEjb
+
+2019-05-29 20:45:57,743 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named AddBean in deployment unit deployment "SimpleEjb.jar" are as follows:
+
+	java:global/SimpleEjb/AddBean!ejbs.AddBeanRemote
+	java:app/SimpleEjb/AddBean!ejbs.AddBeanRemote
+	java:module/AddBean!ejbs.AddBeanRemote
+	java:jboss/exported/SimpleEjb/AddBean!ejbs.AddBeanRemote
+	java:global/SimpleEjb/AddBean
+	java:app/SimpleEjb/AddBean
+	java:module/AddBean
+
+2019-05-29 20:45:57,971 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0006: Starting Services for CDI deployment: SimpleEjb.jar
+2019-05-29 20:45:58,031 INFO  [org.jboss.weld.Version] (MSC service thread 1-6) WELD-000900: 2.2.16 (SP1)
+2019-05-29 20:45:58,067 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) WFLYWELD0009: Starting weld service for deployment SimpleEjb.jar
+2019-05-29 20:45:58,825 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 58) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'SimpleEjb.jar#CatalogPersistence'
+2019-05-29 20:45:58,995 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 58) HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2019-05-29 20:45:59,668 WARN  [org.jboss.jca.core.connectionmanager.pool.strategy.OnePool] (ServerService Thread Pool -- 58) IJ000407: No lazy enlistment available for postgresDS
+2019-05-29 20:46:00,012 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 58) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2019-05-29 20:46:00,029 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 58) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2019-05-29 20:46:00,169 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 58) HHH000397: Using ASTQueryTranslatorFactory
+2019-05-29 20:46:00,675 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 58) HHH000228: Running hbm2ddl schema update
+2019-05-29 20:46:00,676 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 58) HHH000102: Fetching database metadata
+2019-05-29 20:46:00,721 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 58) HHH000396: Updating schema
+2019-05-29 20:46:00,847 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 58) HHH000261: Table found: public.students_table
+2019-05-29 20:46:00,848 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 58) HHH000037: Columns: [studentid, phone, name]
+2019-05-29 20:46:00,848 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 58) HHH000108: Foreign keys: []
+2019-05-29 20:46:00,849 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 58) HHH000126: Indexes: [students_table_pkey]
+2019-05-29 20:46:00,850 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 58) HHH000232: Schema update complete
+2019-05-29 20:46:01,781 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 34) WFLYSRV0010: Deployed "SimpleEjb.jar" (runtime-name : "SimpleEjb.jar")
+2019-05-29 20:46:01,987 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+2019-05-29 20:46:01,987 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+2019-05-29 20:46:01,988 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 9.0.2.Final (WildFly Core 1.0.2.Final) started in 10086ms - Started 329 of 502 services (218 services are lazy, passive or on-demand)
+2019-05-29 20:55:54,023 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 1) WFLYDR0009: Content /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/2d/228572007646617832b045591ebe0a7a721810 is obsolete and will be removed
+2019-05-29 20:55:54,032 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 1) WFLYDR0002: Content removed from location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/2d/228572007646617832b045591ebe0a7a721810/content
+2019-05-29 21:17:01,449 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0001: Content added at location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/03/e2cc80f72b70f66c0adeb2ddd34efb3ba2a206/content
+2019-05-29 21:17:01,501 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0027: Starting deployment of "Citations-EJB.jar" (runtime-name: "Citations-EJB.jar")
+2019-05-29 21:17:01,672 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) WFLYWELD0003: Processing weld deployment Citations-EJB.jar
+2019-05-29 21:17:01,737 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-3) JNDI bindings for session bean named EJBServCit in deployment unit deployment "Citations-EJB.jar" are as follows:
+
+	java:global/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:app/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:module/EJBServCit!ejbs.EJBServCitRemote
+	java:jboss/exported/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:global/Citations-EJB/EJBServCit
+	java:app/Citations-EJB/EJBServCit
+	java:module/EJBServCit
+
+2019-05-29 21:17:01,788 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-5) MSC000001: Failed to start service jboss.deployment.unit."Citations-EJB.jar".INSTALL: org.jboss.msc.service.StartException in service jboss.deployment.unit."Citations-EJB.jar".INSTALL: WFLYSRV0153: Failed to process phase INSTALL of deployment "Citations-EJB.jar"
+	at org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:163)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1948)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1881)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.jboss.as.server.deployment.DeploymentUnitProcessingException: WFLYEE0041: Component class ejbs.EJBServCit for component EJBServCit has errors: 
+WFLYJPA0033: Can't find a persistence unit named null in deployment "Citations-EJB.jar"
+	at org.jboss.as.ee.component.deployers.ModuleJndiBindingProcessor$1.handle(ModuleJndiBindingProcessor.java:158)
+	at org.jboss.as.ee.component.ClassDescriptionTraversal.run(ClassDescriptionTraversal.java:54)
+	at org.jboss.as.ee.component.deployers.ModuleJndiBindingProcessor.processClassConfigurations(ModuleJndiBindingProcessor.java:151)
+	at org.jboss.as.ee.component.deployers.ModuleJndiBindingProcessor.deploy(ModuleJndiBindingProcessor.java:144)
+	at org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:156)
+	... 5 more
+
+2019-05-29 21:17:01,795 ERROR [org.jboss.as.controller.management-operation] (DeploymentScanner-threads - 1) WFLYCTL0013: Operation ("deploy") failed - address: ([("deployment" => "Citations-EJB.jar")]) - failure description: {
+    "WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"Citations-EJB.jar\".INSTALL" => "org.jboss.msc.service.StartException in service jboss.deployment.unit.\"Citations-EJB.jar\".INSTALL: WFLYSRV0153: Failed to process phase INSTALL of deployment \"Citations-EJB.jar\"
+    Caused by: org.jboss.as.server.deployment.DeploymentUnitProcessingException: WFLYEE0041: Component class ejbs.EJBServCit for component EJBServCit has errors: 
+WFLYJPA0033: Can't find a persistence unit named null in deployment \"Citations-EJB.jar\""},
+    "WFLYCTL0180: Services with missing/unavailable dependencies" => [
+        "jboss.deployment.unit.\"Citations-EJB.jar\".batch.environment is missing [jboss.deployment.unit.\"Citations-EJB.jar\".beanmanager]",
+        "jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.ValidatorFactory is missing [jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit]",
+        "jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.InstanceName is missing [jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit]",
+        "jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.Validator is missing [jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit]",
+        "jboss.deployment.unit.\"Citations-EJB.jar\".weld.weldClassIntrospector is missing [jboss.deployment.unit.\"Citations-EJB.jar\".beanmanager]",
+        "jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.InAppClientContainer is missing [jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit]"
+    ]
+}
+2019-05-29 21:17:01,909 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 1) WFLYSRV0010: Deployed "Citations-EJB.jar" (runtime-name : "Citations-EJB.jar")
+2019-05-29 21:17:01,912 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 1) WFLYCTL0183: Service status report
+WFLYCTL0184:    New missing/unsatisfied dependencies:
+      service jboss.deployment.unit."Citations-EJB.jar".beanmanager (missing) dependents: [service jboss.deployment.unit."Citations-EJB.jar".weld.weldClassIntrospector, service jboss.deployment.unit."Citations-EJB.jar".batch.environment] 
+      service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit (missing) dependents: [service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.InstanceName, service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.InAppClientContainer, service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.Validator, service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.ValidatorFactory] 
+WFLYCTL0186:   Services which failed to start:      service jboss.deployment.unit."Citations-EJB.jar".INSTALL: org.jboss.msc.service.StartException in service jboss.deployment.unit."Citations-EJB.jar".INSTALL: WFLYSRV0153: Failed to process phase INSTALL of deployment "Citations-EJB.jar"
+
+2019-05-29 21:17:32,086 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 64) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'SimpleEjb.jar#CatalogPersistence'
+2019-05-29 21:17:32,098 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) WFLYWELD0010: Stopping weld service for deployment SimpleEjb.jar
+2019-05-29 21:17:32,099 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 64) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'SimpleEjb.jar#CatalogPersistence'
+2019-05-29 21:17:32,149 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) WFLYSRV0028: Stopped deployment SimpleEjb.jar (runtime-name: SimpleEjb.jar) in 124ms
+2019-05-29 21:17:32,165 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0002: Content removed from location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/da/5a7d2eca9ddc30b2912822b52e57061bdf4583/content
+2019-05-29 21:17:32,166 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 1) WFLYSRV0009: Undeployed "SimpleEjb.jar" (runtime-name: "SimpleEjb.jar")
+2019-05-29 21:17:32,166 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 1) WFLYCTL0183: Service status report
+WFLYCTL0186:   Services which failed to start:      service jboss.deployment.unit."Citations-EJB.jar".INSTALL: org.jboss.msc.service.StartException in service jboss.deployment.unit."Citations-EJB.jar".INSTALL: WFLYSRV0153: Failed to process phase INSTALL of deployment "Citations-EJB.jar"
+
+2019-05-29 21:17:37,352 INFO  [org.jboss.as.server] (Thread-2) WFLYSRV0220: Server shutdown has been requested.
+2019-05-29 21:17:37,387 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
+2019-05-29 21:17:37,393 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0019: Host default-host stopping
+2019-05-29 21:17:37,393 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0010: Unbound data source [java:jboss/datasources/postgresDS]
+2019-05-29 21:17:37,412 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = h2
+2019-05-29 21:17:37,417 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0028: Stopped deployment Citations-EJB.jar (runtime-name: Citations-EJB.jar) in 59ms
+2019-05-29 21:17:37,424 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0008: Undertow HTTP listener default suspending
+2019-05-29 21:17:37,425 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0007: Undertow HTTP listener default stopped, was bound to /127.0.0.1:8080
+2019-05-29 21:17:37,427 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = postgresql
+2019-05-29 21:17:37,431 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0004: Undertow 1.2.9.Final stopping
+2019-05-29 21:17:37,439 INFO  [org.jboss.as] (MSC service thread 1-7) WFLYSRV0050: WildFly Full 9.0.2.Final (WildFly Core 1.0.2.Final) stopped in 51ms
+2019-05-29 21:17:54,811 INFO  [org.jboss.modules] (main) JBoss Modules version 1.4.3.Final
+2019-05-29 21:17:55,131 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.6.Final
+2019-05-29 21:17:55,240 INFO  [org.jboss.as] (MSC service thread 1-6) WFLYSRV0049: WildFly Full 9.0.2.Final (WildFly Core 1.0.2.Final) starting
+2019-05-29 21:17:55,242 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
+	[Standalone] = 
+	awt.toolkit = sun.lwawt.macosx.LWCToolkit
+	file.encoding = UTF-8
+	file.encoding.pkg = sun.io
+	file.separator = /
+	ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	gopherProxySet = false
+	http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	java.awt.graphicsenv = sun.awt.CGraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.lwawt.macosx.CPrinterJob
+	java.class.path = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/jboss-modules.jar
+	java.class.version = 52.0
+	java.endorsed.dirs = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/endorsed
+	java.ext.dirs = /Users/joaosousa/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+	java.home = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre
+	java.io.tmpdir = /var/folders/9w/s6xl6fcd0xgd69gg9v4b2lz00000gn/T/
+	java.library.path = /Users/joaosousa/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.8.0_111-b14
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.8
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.8.0_111
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.8
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 25.111-b14
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	javax.xml.datatype.DatatypeFactory = __redirected.__DatatypeFactory
+	javax.xml.parsers.DocumentBuilderFactory = __redirected.__DocumentBuilderFactory
+	javax.xml.parsers.SAXParserFactory = __redirected.__SAXParserFactory
+	javax.xml.stream.XMLEventFactory = __redirected.__XMLEventFactory
+	javax.xml.stream.XMLInputFactory = __redirected.__XMLInputFactory
+	javax.xml.stream.XMLOutputFactory = __redirected.__XMLOutputFactory
+	javax.xml.transform.TransformerFactory = __redirected.__TransformerFactory
+	javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema = __redirected.__SchemaFactory
+	javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom = __redirected.__XPathFactory
+	jboss.home.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final
+	jboss.host.name = pci
+	jboss.modules.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = pci
+	jboss.qualified.host.name = pci.fritz.box
+	jboss.server.base.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone
+	jboss.server.config.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration
+	jboss.server.data.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data
+	jboss.server.deploy.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content
+	jboss.server.log.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log
+	jboss.server.name = pci
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/tmp
+	line.separator = 
+
+	logging.configuration = file:/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration/logging.properties
+	module.path = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules
+	org.jboss.boot.log.file = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log/server.log
+	org.jboss.resolver.warning = true
+	org.xml.sax.driver = __redirected.__XMLReaderFactory
+	os.arch = x86_64
+	os.name = Mac OS X
+	os.version = 10.14.5
+	path.separator = :
+	socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	sun.arch.data.model = 64
+	sun.boot.class.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/classes
+	sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib
+	sun.cpu.endian = little
+	sun.cpu.isalist = 
+	sun.io.unicode.encoding = UnicodeBig
+	sun.java.command = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/jboss-modules.jar -mp /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/modules org.jboss.as.standalone -Djboss.home.dir=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final -Djboss.server.base.dir=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = UTF-8
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = unknown
+	user.country = US
+	user.country.format = DE
+	user.dir = /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/bin
+	user.home = /Users/joaosousa
+	user.language = en
+	user.name = joaosousa
+	user.timezone = Europe/Berlin
+2019-05-29 21:17:55,244 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -D[Standalone] -XX:+UseCompressedOops -XX:+UseCompressedOops -Xms64m -Xmx512m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Dorg.jboss.boot.log.file=/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/log/server.log -Dlogging.configuration=file:/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/configuration/logging.properties 
+2019-05-29 21:17:56,738 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 18) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=ExampleDS' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-29 21:17:56,740 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 18) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=postgresDS' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-29 21:17:56,752 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 22) WFLYCTL0028: Attribute 'job-repository-type' in the resource at address '/subsystem=batch' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2019-05-29 21:17:56,853 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2019-05-29 21:17:56,891 INFO  [org.xnio] (MSC service thread 1-1) XNIO version 3.3.1.Final
+2019-05-29 21:17:56,906 INFO  [org.xnio.nio] (MSC service thread 1-1) XNIO NIO Implementation Version 3.3.1.Final
+2019-05-29 21:17:56,964 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 37) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+2019-05-29 21:17:56,978 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+2019-05-29 21:17:56,991 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.1)
+2019-05-29 21:17:57,023 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 38) WFLYCLINF0001: Activating Infinispan subsystem.
+2019-05-29 21:17:57,037 INFO  [org.jboss.as.connector] (MSC service thread 1-2) WFLYJCA0009: Starting JCA Subsystem (IronJacamar 1.2.5.Final)
+2019-05-29 21:17:57,048 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) WFLYJCA0018: Started Driver service with driver-name = postgresql
+2019-05-29 21:17:57,049 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0018: Started Driver service with driver-name = h2
+2019-05-29 21:17:57,078 INFO  [org.jboss.remoting] (MSC service thread 1-1) JBoss Remoting version 4.0.9.Final
+2019-05-29 21:17:57,123 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 44) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2019-05-29 21:17:57,134 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 46) WFLYNAM0001: Activating Naming Subsystem
+2019-05-29 21:17:57,167 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 53) WFLYSEC0002: Activating Security Subsystem
+2019-05-29 21:17:57,174 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 56) WFLYWS0002: Activating WebServices Extension
+2019-05-29 21:17:57,167 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 54) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+2019-05-29 21:17:57,307 INFO  [org.jboss.as.naming] (MSC service thread 1-2) WFLYNAM0003: Starting Naming Service
+2019-05-29 21:17:57,307 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-3) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2019-05-29 21:17:57,310 INFO  [org.jboss.as.security] (MSC service thread 1-5) WFLYSEC0001: Current PicketBox version=4.9.2.Final
+2019-05-29 21:17:57,330 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) WFLYUT0003: Undertow 1.2.9.Final starting
+2019-05-29 21:17:57,330 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0003: Undertow 1.2.9.Final starting
+2019-05-29 21:17:57,399 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) WFLYUT0014: Creating file handler for path /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/welcome-content
+2019-05-29 21:17:57,479 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0012: Started server default-server.
+2019-05-29 21:17:57,533 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0018: Host default-host starting
+2019-05-29 21:17:57,640 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) WFLYUT0006: Undertow HTTP listener default listening on /127.0.0.1:8080
+2019-05-29 21:17:57,772 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) WFLYJCA0001: Bound data source [java:jboss/datasources/postgresDS]
+2019-05-29 21:17:57,772 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+2019-05-29 21:17:57,915 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) WFLYDS0013: Started FileSystemDeploymentService for directory /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/deployments
+2019-05-29 21:17:57,932 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) WFLYSRV0027: Starting deployment of "Citations-EJB.jar" (runtime-name: "Citations-EJB.jar")
+2019-05-29 21:17:58,142 INFO  [org.jboss.ws.common.management] (MSC service thread 1-1) JBWS022052: Starting JBoss Web Services - Stack CXF Server 5.0.0.Final
+2019-05-29 21:17:58,334 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) WFLYWELD0003: Processing weld deployment Citations-EJB.jar
+2019-05-29 21:17:58,449 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-3) HV000001: Hibernate Validator 5.1.3.Final
+2019-05-29 21:17:58,563 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-3) JNDI bindings for session bean named EJBServCit in deployment unit deployment "Citations-EJB.jar" are as follows:
+
+	java:global/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:app/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:module/EJBServCit!ejbs.EJBServCitRemote
+	java:jboss/exported/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:global/Citations-EJB/EJBServCit
+	java:app/Citations-EJB/EJBServCit
+	java:module/EJBServCit
+
+2019-05-29 21:17:58,708 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-4) MSC000001: Failed to start service jboss.deployment.unit."Citations-EJB.jar".INSTALL: org.jboss.msc.service.StartException in service jboss.deployment.unit."Citations-EJB.jar".INSTALL: WFLYSRV0153: Failed to process phase INSTALL of deployment "Citations-EJB.jar"
+	at org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:163)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1948)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1881)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.jboss.as.server.deployment.DeploymentUnitProcessingException: WFLYEE0041: Component class ejbs.EJBServCit for component EJBServCit has errors: 
+WFLYJPA0033: Can't find a persistence unit named null in deployment "Citations-EJB.jar"
+	at org.jboss.as.ee.component.deployers.ModuleJndiBindingProcessor$1.handle(ModuleJndiBindingProcessor.java:158)
+	at org.jboss.as.ee.component.ClassDescriptionTraversal.run(ClassDescriptionTraversal.java:54)
+	at org.jboss.as.ee.component.deployers.ModuleJndiBindingProcessor.processClassConfigurations(ModuleJndiBindingProcessor.java:151)
+	at org.jboss.as.ee.component.deployers.ModuleJndiBindingProcessor.deploy(ModuleJndiBindingProcessor.java:144)
+	at org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:156)
+	... 5 more
+
+2019-05-29 21:17:58,715 ERROR [org.jboss.as.controller.management-operation] (Controller Boot Thread) WFLYCTL0013: Operation ("deploy") failed - address: ([("deployment" => "Citations-EJB.jar")]) - failure description: {
+    "WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"Citations-EJB.jar\".INSTALL" => "org.jboss.msc.service.StartException in service jboss.deployment.unit.\"Citations-EJB.jar\".INSTALL: WFLYSRV0153: Failed to process phase INSTALL of deployment \"Citations-EJB.jar\"
+    Caused by: org.jboss.as.server.deployment.DeploymentUnitProcessingException: WFLYEE0041: Component class ejbs.EJBServCit for component EJBServCit has errors: 
+WFLYJPA0033: Can't find a persistence unit named null in deployment \"Citations-EJB.jar\""},
+    "WFLYCTL0180: Services with missing/unavailable dependencies" => [
+        "jboss.deployment.unit.\"Citations-EJB.jar\".weld.weldClassIntrospector is missing [jboss.deployment.unit.\"Citations-EJB.jar\".beanmanager]",
+        "jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.ValidatorFactory is missing [jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit]",
+        "jboss.deployment.unit.\"Citations-EJB.jar\".batch.environment is missing [jboss.deployment.unit.\"Citations-EJB.jar\".beanmanager]",
+        "jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.Validator is missing [jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit]",
+        "jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.InAppClientContainer is missing [jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit]",
+        "jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.InstanceName is missing [jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit]"
+    ]
+}
+2019-05-29 21:17:58,801 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 34) WFLYSRV0010: Deployed "Citations-EJB.jar" (runtime-name : "Citations-EJB.jar")
+2019-05-29 21:17:58,803 INFO  [org.jboss.as.controller] (Controller Boot Thread) WFLYCTL0183: Service status report
+WFLYCTL0184:    New missing/unsatisfied dependencies:
+      service jboss.deployment.unit."Citations-EJB.jar".beanmanager (missing) dependents: [service jboss.deployment.unit."Citations-EJB.jar".weld.weldClassIntrospector, service jboss.deployment.unit."Citations-EJB.jar".batch.environment] 
+      service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit (missing) dependents: [service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.InstanceName, service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.InAppClientContainer, service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.Validator, service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit.ValidatorFactory] 
+WFLYCTL0186:   Services which failed to start:      service jboss.deployment.unit."Citations-EJB.jar".INSTALL: org.jboss.msc.service.StartException in service jboss.deployment.unit."Citations-EJB.jar".INSTALL: WFLYSRV0153: Failed to process phase INSTALL of deployment "Citations-EJB.jar"
+
+2019-05-29 21:17:59,022 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+2019-05-29 21:17:59,023 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+2019-05-29 21:17:59,023 ERROR [org.jboss.as] (Controller Boot Thread) WFLYSRV0026: WildFly Full 9.0.2.Final (WildFly Core 1.0.2.Final) started (with errors) in 4683ms - Started 232 of 415 services (7 services failed or missing dependencies, 212 services are lazy, passive or on-demand)
+2019-05-29 21:17:59,063 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0028: Stopped deployment Citations-EJB.jar (runtime-name: Citations-EJB.jar) in 10ms
+2019-05-29 21:17:59,126 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0002: Content removed from location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/03/e2cc80f72b70f66c0adeb2ddd34efb3ba2a206/content
+2019-05-29 21:17:59,126 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) WFLYSRV0009: Undeployed "Citations-EJB.jar" (runtime-name: "Citations-EJB.jar")
+2019-05-29 21:17:59,127 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 2) WFLYCTL0183: Service status report
+WFLYCTL0184:    New missing/unsatisfied dependencies:
+      service jboss.deployment.unit."Citations-EJB.jar".batch.job-xml (missing) dependents: [service jboss.deployment.unit."Citations-EJB.jar".batch.environment] 
+WFLYCTL0186:   Services which failed to start:      service jboss.deployment.unit."Citations-EJB.jar".INSTALL
+
+2019-05-29 21:24:54,354 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0001: Content added at location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/ac/9ec087f4b20e0fb0b7c95624645bdc4ce87b6c/content
+2019-05-29 21:24:54,370 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) WFLYSRV0027: Starting deployment of "Citations-EJB.jar" (runtime-name: "Citations-EJB.jar")
+2019-05-29 21:24:54,409 INFO  [org.jboss.as.jpa] (MSC service thread 1-2) WFLYJPA0002: Read persistence.xml for CatalogPersistence
+2019-05-29 21:24:54,490 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 61) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'Citations-EJB.jar#CatalogPersistence'
+2019-05-29 21:24:54,511 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 61) HHH000204: Processing PersistenceUnitInfo [
+	name: CatalogPersistence
+	...]
+2019-05-29 21:24:54,659 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 61) HHH000412: Hibernate Core {4.3.10.Final}
+2019-05-29 21:24:54,668 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 61) HHH000206: hibernate.properties not found
+2019-05-29 21:24:54,672 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 61) HHH000021: Bytecode provider name : javassist
+2019-05-29 21:24:54,856 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) WFLYWELD0003: Processing weld deployment Citations-EJB.jar
+2019-05-29 21:24:54,873 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named EJBServCit in deployment unit deployment "Citations-EJB.jar" are as follows:
+
+	java:global/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:app/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:module/EJBServCit!ejbs.EJBServCitRemote
+	java:jboss/exported/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:global/Citations-EJB/EJBServCit
+	java:app/Citations-EJB/EJBServCit
+	java:module/EJBServCit
+
+2019-05-29 21:24:54,996 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) WFLYWELD0006: Starting Services for CDI deployment: Citations-EJB.jar
+2019-05-29 21:24:55,082 INFO  [org.jboss.weld.Version] (MSC service thread 1-7) WELD-000900: 2.2.16 (SP1)
+2019-05-29 21:24:55,139 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0009: Starting weld service for deployment Citations-EJB.jar
+2019-05-29 21:24:56,068 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 61) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'Citations-EJB.jar#CatalogPersistence'
+2019-05-29 21:24:56,236 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 61) HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2019-05-29 21:24:56,647 WARN  [org.jboss.jca.core.connectionmanager.pool.strategy.OnePool] (ServerService Thread Pool -- 61) IJ000407: No lazy enlistment available for postgresDS
+2019-05-29 21:24:56,975 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 61) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL9Dialect
+2019-05-29 21:24:56,991 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 61) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2019-05-29 21:24:57,064 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 61) HHH000397: Using ASTQueryTranslatorFactory
+2019-05-29 21:24:57,317 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 61) HHH000228: Running hbm2ddl schema update
+2019-05-29 21:24:57,318 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 61) HHH000102: Fetching database metadata
+2019-05-29 21:24:57,376 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 61) HHH000396: Updating schema
+2019-05-29 21:24:57,377 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 61) HHH000232: Schema update complete
+2019-05-29 21:24:57,609 INFO  [org.jboss.weld.Bootstrap] (weld-worker-1) WELD-000119: Not generating any bean definitions from ejbs.EJBServCit because of underlying class loading error: Type dao.CitationChicagoDAO from [Module "deployment.Citations-EJB.jar:main" from Service Module Loader] not found.  If this is unexpected, enable DEBUG logging to see the full error.
+2019-05-29 21:24:57,756 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-8) MSC000001: Failed to start service jboss.deployment.unit."Citations-EJB.jar".WeldStartService: org.jboss.msc.service.StartException in service jboss.deployment.unit."Citations-EJB.jar".WeldStartService: Failed to start service
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1904)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.jboss.weld.resources.spi.ResourceLoadingException: Exception while loading class ejbs.EJBServCit
+	at org.jboss.weld.resources.ClassTransformer.getBackedAnnotatedType(ClassTransformer.java:179)
+	at org.jboss.weld.resources.ClassTransformer.getBackedAnnotatedType(ClassTransformer.java:194)
+	at org.jboss.weld.resources.ClassTransformer.getEnhancedAnnotatedType(ClassTransformer.java:228)
+	at org.jboss.weld.bootstrap.AbstractBeanDeployer.createSessionBean(AbstractBeanDeployer.java:288)
+	at org.jboss.weld.bootstrap.ConcurrentBeanDeployer$3.doWork(ConcurrentBeanDeployer.java:93)
+	at org.jboss.weld.bootstrap.ConcurrentBeanDeployer$3.doWork(ConcurrentBeanDeployer.java:82)
+	at org.jboss.weld.executor.IterativeWorkerTaskFactory$1.call(IterativeWorkerTaskFactory.java:60)
+	at org.jboss.weld.executor.IterativeWorkerTaskFactory$1.call(IterativeWorkerTaskFactory.java:53)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	... 3 more
+Caused by: java.lang.TypeNotPresentException: Type dao.CitationChicagoDAO not present
+	at sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:117)
+	at sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:125)
+	at sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at sun.reflect.generics.visitor.Reifier.reifyTypeArguments(Reifier.java:68)
+	at sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:138)
+	at sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at sun.reflect.generics.repository.MethodRepository.getReturnType(MethodRepository.java:68)
+	at java.lang.reflect.Method.getGenericReturnType(Method.java:255)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedMethod.<init>(BackedAnnotatedMethod.java:38)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedMethod.of(BackedAnnotatedMethod.java:32)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedType$BackedAnnotatedMethods.computeValue(BackedAnnotatedType.java:199)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedType$BackedAnnotatedMethods.computeValue(BackedAnnotatedType.java:192)
+	at org.jboss.weld.util.LazyValueHolder.get(LazyValueHolder.java:35)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedType$EagerlyInitializedLazyValueHolder.<init>(BackedAnnotatedType.java:160)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedType$BackedAnnotatedMethods.<init>(BackedAnnotatedType.java:192)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedType$BackedAnnotatedMethods.<init>(BackedAnnotatedType.java:192)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedType.<init>(BackedAnnotatedType.java:67)
+	at org.jboss.weld.annotated.slim.backed.BackedAnnotatedType.of(BackedAnnotatedType.java:48)
+	at org.jboss.weld.resources.ClassTransformer$TransformClassToBackedAnnotatedType.load(ClassTransformer.java:83)
+	at org.jboss.weld.resources.ClassTransformer$TransformClassToBackedAnnotatedType.load(ClassTransformer.java:80)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3527)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2319)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2282)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2197)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3937)
+	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:3941)
+	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:4824)
+	at org.jboss.weld.util.cache.LoadingCacheUtils.getCacheValue(LoadingCacheUtils.java:49)
+	at org.jboss.weld.util.cache.LoadingCacheUtils.getCastCacheValue(LoadingCacheUtils.java:74)
+	at org.jboss.weld.resources.ClassTransformer.getBackedAnnotatedType(ClassTransformer.java:175)
+	... 11 more
+Caused by: java.lang.ClassNotFoundException: dao.CitationChicagoDAO from [Module "deployment.Citations-EJB.jar:main" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:205)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:455)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassChecked(ConcurrentClassLoader.java:404)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:385)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:130)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:114)
+	... 40 more
+
+2019-05-29 21:24:57,766 ERROR [org.jboss.as.controller.management-operation] (DeploymentScanner-threads - 2) WFLYCTL0013: Operation ("deploy") failed - address: ([("deployment" => "Citations-EJB.jar")]) - failure description: {"WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"Citations-EJB.jar\".WeldStartService" => "org.jboss.msc.service.StartException in service jboss.deployment.unit.\"Citations-EJB.jar\".WeldStartService: Failed to start service
+    Caused by: org.jboss.weld.resources.spi.ResourceLoadingException: Exception while loading class ejbs.EJBServCit
+    Caused by: java.lang.TypeNotPresentException: Type dao.CitationChicagoDAO not present
+    Caused by: java.lang.ClassNotFoundException: dao.CitationChicagoDAO from [Module \"deployment.Citations-EJB.jar:main\" from Service Module Loader]"}}
+2019-05-29 21:24:57,786 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) WFLYSRV0010: Deployed "Citations-EJB.jar" (runtime-name : "Citations-EJB.jar")
+2019-05-29 21:24:57,787 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 2) WFLYCTL0183: Service status report
+WFLYCTL0185:    Newly corrected services:
+      service jboss.deployment.unit."Citations-EJB.jar".batch.job-xml (new available)
+      service jboss.deployment.unit."Citations-EJB.jar".beanmanager (new available)
+      service jboss.naming.context.java.comp.Citations-EJB.Citations-EJB.EJBServCit (new available)
+WFLYCTL0186:   Services which failed to start:      service jboss.deployment.unit."Citations-EJB.jar".WeldStartService: org.jboss.msc.service.StartException in service jboss.deployment.unit."Citations-EJB.jar".WeldStartService: Failed to start service
+
+2019-05-29 21:32:13,789 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0001: Content added at location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/cc/4ac46d3ee5e39a32daf2b129b6b07a19ba5cfe/content
+2019-05-29 21:32:13,824 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 62) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'Citations-EJB.jar#CatalogPersistence'
+2019-05-29 21:32:13,837 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0010: Stopping weld service for deployment Citations-EJB.jar
+2019-05-29 21:32:13,990 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 62) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'Citations-EJB.jar#CatalogPersistence'
+2019-05-29 21:32:14,030 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) WFLYSRV0028: Stopped deployment Citations-EJB.jar (runtime-name: Citations-EJB.jar) in 221ms
+2019-05-29 21:32:14,039 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) WFLYSRV0027: Starting deployment of "Citations-EJB.jar" (runtime-name: "Citations-EJB.jar")
+2019-05-29 21:32:14,079 INFO  [org.jboss.as.jpa] (MSC service thread 1-4) WFLYJPA0002: Read persistence.xml for CatalogPersistence
+2019-05-29 21:32:14,116 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 62) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'Citations-EJB.jar#CatalogPersistence'
+2019-05-29 21:32:14,117 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 62) HHH000204: Processing PersistenceUnitInfo [
+	name: CatalogPersistence
+	...]
+2019-05-29 21:32:14,160 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) WFLYWELD0003: Processing weld deployment Citations-EJB.jar
+2019-05-29 21:32:14,172 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-3) JNDI bindings for session bean named EJBServCit in deployment unit deployment "Citations-EJB.jar" are as follows:
+
+	java:global/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:app/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:module/EJBServCit!ejbs.EJBServCitRemote
+	java:jboss/exported/Citations-EJB/EJBServCit!ejbs.EJBServCitRemote
+	java:global/Citations-EJB/EJBServCit
+	java:app/Citations-EJB/EJBServCit
+	java:module/EJBServCit
+
+2019-05-29 21:32:14,194 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) WFLYWELD0006: Starting Services for CDI deployment: Citations-EJB.jar
+2019-05-29 21:32:14,204 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) WFLYWELD0009: Starting weld service for deployment Citations-EJB.jar
+2019-05-29 21:32:14,220 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 62) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'Citations-EJB.jar#CatalogPersistence'
+2019-05-29 21:32:14,274 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 62) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL9Dialect
+2019-05-29 21:32:14,278 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 62) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2019-05-29 21:32:14,467 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 62) HHH000397: Using ASTQueryTranslatorFactory
+2019-05-29 21:32:14,993 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 62) HHH000228: Running hbm2ddl schema update
+2019-05-29 21:32:14,994 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 62) HHH000102: Fetching database metadata
+2019-05-29 21:32:14,997 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 62) HHH000396: Updating schema
+2019-05-29 21:32:15,197 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 62) HHH000261: Table found: public.citationchicagodb
+2019-05-29 21:32:15,198 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 62) HHH000037: Columns: [chicagoid, citationdate, ligacao, citationtext]
+2019-05-29 21:32:15,198 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 62) HHH000108: Foreign keys: [fkpqg9ammx6ghc58x2fwawik1d3]
+2019-05-29 21:32:15,198 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 62) HHH000126: Indexes: [citationchicagodb_pkey]
+2019-05-29 21:32:15,230 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 62) HHH000261: Table found: public.citationdb
+2019-05-29 21:32:15,230 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 62) HHH000037: Columns: [pub_titleid, title]
+2019-05-29 21:32:15,231 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 62) HHH000108: Foreign keys: []
+2019-05-29 21:32:15,231 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 62) HHH000126: Indexes: [citationdb_pkey]
+2019-05-29 21:32:15,232 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 62) HHH000232: Schema update complete
+2019-05-29 21:32:15,773 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) WFLYSRV0016: Replaced deployment "Citations-EJB.jar" with deployment "Citations-EJB.jar"
+2019-05-29 21:32:15,774 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 2) WFLYCTL0183: Service status report
+WFLYCTL0184:    New missing/unsatisfied dependencies:
+      service jboss.deployment.unit."Citations-EJB.jar".WeldBootstrapService (unavailable) dependents: [service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.WeldInterceptorBindingsService, service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.WeldInstantiator, service jboss.deployment.unit."Citations-EJB.jar".CdiValidatorFactoryService] 
+      service jboss.deployment.unit."Citations-EJB.jar".WeldStartService (unavailable) dependents: [service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.WeldInterceptorBindingsService, service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.WeldInstantiator, service jboss.deployment.unit."Citations-EJB.jar".CdiValidatorFactoryService] 
+      service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.CREATE (unavailable) dependents: [service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.START] 
+      service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.START (unavailable) dependents: [service jboss.deployment.unit."Citations-EJB.jar".moduleDeploymentRuntimeInformationStart, service jboss.deployment.unit."Citations-EJB.jar".deploymentCompleteService] 
+      service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.WeldInterceptorBindingsService (unavailable) dependents: [service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.WeldInstantiator] 
+      service jboss.deployment.unit."Citations-EJB.jar".moduleDeploymentRuntimeInformation (unavailable) dependents: [service jboss.deployment.unit."Citations-EJB.jar".moduleDeploymentRuntimeInformationStart] 
+      service jboss.persistenceunit."Citations-EJB.jar#CatalogPersistence" (unavailable) dependents: [service jboss.deployment.unit."Citations-EJB.jar".deploymentCompleteService] 
+WFLYCTL0186:   Services which failed to start:      service jboss.deployment.unit."Citations-EJB.jar".WeldStartService
+
+2019-05-29 21:32:15,776 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0002: Content removed from location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/ac/9ec087f4b20e0fb0b7c95624645bdc4ce87b6c/content
+2019-05-29 21:39:01,648 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0001: Content added at location /Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/data/content/26/78797b4d62d5ebe33aca7c751272c2f3cac015/content
+2019-05-29 21:39:01,660 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0027: Starting deployment of "Journals-EJB.jar" (runtime-name: "Journals-EJB.jar")
+2019-05-29 21:39:01,682 INFO  [org.jboss.as.jpa] (MSC service thread 1-6) WFLYJPA0002: Read persistence.xml for CatalogPersistence
+2019-05-29 21:39:01,717 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 63) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'Journals-EJB.jar#CatalogPersistence'
+2019-05-29 21:39:01,718 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 63) HHH000204: Processing PersistenceUnitInfo [
+	name: CatalogPersistence
+	...]
+2019-05-29 21:39:01,755 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) WFLYWELD0003: Processing weld deployment Journals-EJB.jar
+2019-05-29 21:39:01,770 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-5) JNDI bindings for session bean named PubsMethods in deployment unit deployment "Journals-EJB.jar" are as follows:
+
+	java:global/Journals-EJB/PubsMethods!ejbs.PubsMethodsRemote
+	java:app/Journals-EJB/PubsMethods!ejbs.PubsMethodsRemote
+	java:module/PubsMethods!ejbs.PubsMethodsRemote
+	java:jboss/exported/Journals-EJB/PubsMethods!ejbs.PubsMethodsRemote
+	java:global/Journals-EJB/PubsMethods
+	java:app/Journals-EJB/PubsMethods
+	java:module/PubsMethods
+
+2019-05-29 21:39:01,805 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) WFLYWELD0006: Starting Services for CDI deployment: Journals-EJB.jar
+2019-05-29 21:39:01,814 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) WFLYWELD0009: Starting weld service for deployment Journals-EJB.jar
+2019-05-29 21:39:01,839 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 63) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'Journals-EJB.jar#CatalogPersistence'
+2019-05-29 21:39:01,860 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 63) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL9Dialect
+2019-05-29 21:39:01,862 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 63) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2019-05-29 21:39:01,875 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 63) HHH000397: Using ASTQueryTranslatorFactory
+2019-05-29 21:39:01,919 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 63) HHH000228: Running hbm2ddl schema update
+2019-05-29 21:39:01,921 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 63) HHH000102: Fetching database metadata
+2019-05-29 21:39:01,923 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 63) HHH000396: Updating schema
+2019-05-29 21:39:01,963 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 63) HHH000261: Table found: public.journaldb
+2019-05-29 21:39:01,964 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 63) HHH000037: Columns: [date, volume, conference, journal, pages, issue, pub_titleid, scholarartic, description, publisher, citationnumber, authors]
+2019-05-29 21:39:01,964 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 63) HHH000108: Foreign keys: []
+2019-05-29 21:39:01,965 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 63) HHH000126: Indexes: [journaldb_pkey]
+2019-05-29 21:39:01,965 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 63) HHH000232: Schema update complete
+2019-05-29 21:39:02,262 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 1) WFLYSRV0010: Deployed "Journals-EJB.jar" (runtime-name : "Journals-EJB.jar")
+2019-05-29 21:39:02,263 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 1) WFLYCTL0183: Service status report
+WFLYCTL0185:    Newly corrected services:
+      service jboss.deployment.unit."Citations-EJB.jar".WeldBootstrapService (new available)
+      service jboss.deployment.unit."Citations-EJB.jar".WeldStartService (new available)
+      service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.CREATE (new available)
+      service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.START (new available)
+      service jboss.deployment.unit."Citations-EJB.jar".component.EJBServCit.WeldInterceptorBindingsService (new available)
+      service jboss.deployment.unit."Citations-EJB.jar".moduleDeploymentRuntimeInformation (new available)
+      service jboss.persistenceunit."Citations-EJB.jar#CatalogPersistence" (new available)
+
+2019-05-29 22:15:46,935 INFO  [org.jboss.ejb.client] (pool-1-thread-1) JBoss EJB Client version 2.1.1.Final
+2019-05-29 22:15:47,699 ERROR [org.jboss.as.ejb3.invocation] (EJB default - 1) WFLYEJB0034: EJB Invocation failed on component EJBServCit for method public abstract java.util.List ejbs.EJBServCitRemote.getCitationChicagoList(java.lang.String): javax.ejb.EJBException: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: citationdb is not mapped [SELECT c FROM citationdb c WHERE c.title='WSFAggressor: an extensible web service framework attacking tool']
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.handleExceptionInOurTx(CMTTxInterceptor.java:187)
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:277)
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.required(CMTTxInterceptor.java:327)
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.processInvocation(CMTTxInterceptor.java:239)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.remote.EJBRemoteTransactionPropagatingInterceptor.processInvocation(EJBRemoteTransactionPropagatingInterceptor.java:79)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.CurrentInvocationContextInterceptor.processInvocation(CurrentInvocationContextInterceptor.java:41)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.invocationmetrics.WaitTimeInterceptor.processInvocation(WaitTimeInterceptor.java:43)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.security.SecurityContextInterceptor.processInvocation(SecurityContextInterceptor.java:100)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.ShutDownInterceptorFactory$1.processInvocation(ShutDownInterceptorFactory.java:64)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.deployment.processors.EjbSuspendInterceptor.processInvocation(EjbSuspendInterceptor.java:53)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.LoggingInterceptor.processInvocation(LoggingInterceptor.java:66)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ee.component.NamespaceContextInterceptor.processInvocation(NamespaceContextInterceptor.java:50)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.AdditionalSetupInterceptor.processInvocation(AdditionalSetupInterceptor.java:54)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.ContextClassLoaderInterceptor.processInvocation(ContextClassLoaderInterceptor.java:64)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:634)
+	at org.jboss.invocation.AccessCheckingInterceptor.processInvocation(AccessCheckingInterceptor.java:61)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+	at org.jboss.invocation.PrivilegedWithCombinerInterceptor.processInvocation(PrivilegedWithCombinerInterceptor.java:80)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+	at org.jboss.as.ee.component.ViewService$View.invoke(ViewService.java:195)
+	at org.jboss.as.ejb3.remote.protocol.versionone.MethodInvocationMessageHandler.invokeMethod(MethodInvocationMessageHandler.java:331)
+	at org.jboss.as.ejb3.remote.protocol.versionone.MethodInvocationMessageHandler.access$100(MethodInvocationMessageHandler.java:69)
+	at org.jboss.as.ejb3.remote.protocol.versionone.MethodInvocationMessageHandler$1.run(MethodInvocationMessageHandler.java:202)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:320)
+Caused by: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: citationdb is not mapped [SELECT c FROM citationdb c WHERE c.title='WSFAggressor: an extensible web service framework attacking tool']
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1750)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1677)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1683)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:331)
+	at org.jboss.as.jpa.container.AbstractEntityManager.createQuery(AbstractEntityManager.java:445)
+	at ejbs.EJBServCit.getCitationChicagoList(EJBServCit.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.jboss.as.ee.component.ManagedReferenceMethodInterceptor.processInvocation(ManagedReferenceMethodInterceptor.java:52)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.doMethodInterception(Jsr299BindingsInterceptor.java:82)
+	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.processInvocation(Jsr299BindingsInterceptor.java:93)
+	at org.jboss.as.ee.component.interceptors.UserInterceptorFactory$1.processInvocation(UserInterceptorFactory.java:63)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.invocationmetrics.ExecutionTimeInterceptor.processInvocation(ExecutionTimeInterceptor.java:43)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.jpa.interceptor.SBInvocationInterceptor.processInvocation(SBInvocationInterceptor.java:47)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+	at org.jboss.weld.ejb.AbstractEJBRequestScopeActivationInterceptor.aroundInvoke(AbstractEJBRequestScopeActivationInterceptor.java:73)
+	at org.jboss.as.weld.ejb.EjbRequestScopeActivationInterceptor.processInvocation(EjbRequestScopeActivationInterceptor.java:83)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ee.concurrent.ConcurrentContextInterceptor.processInvocation(ConcurrentContextInterceptor.java:45)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InitialInterceptor.processInvocation(InitialInterceptor.java:21)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+	at org.jboss.as.ee.component.interceptors.ComponentDispatcherInterceptor.processInvocation(ComponentDispatcherInterceptor.java:52)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.NonPooledEJBComponentInstanceAssociatingInterceptor.processInvocation(NonPooledEJBComponentInstanceAssociatingInterceptor.java:59)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:275)
+	... 41 more
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: citationdb is not mapped [SELECT c FROM citationdb c WHERE c.title='WSFAggressor: an extensible web service framework attacking tool']
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:96)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:120)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:234)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:158)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:131)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:93)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:167)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:301)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:236)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1836)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:328)
+	... 72 more
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: citationdb is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:189)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:109)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:95)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:338)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3678)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3567)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:708)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:564)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:301)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:249)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:278)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:206)
+	... 80 more
+
+2019-05-29 22:20:27,962 ERROR [org.jboss.as.ejb3.invocation] (EJB default - 2) WFLYEJB0034: EJB Invocation failed on component EJBServCit for method public abstract java.util.List ejbs.EJBServCitRemote.getCitationChicagoList(java.lang.String): javax.ejb.EJBException: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: citationdb is not mapped [SELECT c FROM citationdb c WHERE c.title='WSFAggressor: an extensible web service framework attacking tool']
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.handleExceptionInOurTx(CMTTxInterceptor.java:187)
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:277)
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.required(CMTTxInterceptor.java:327)
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.processInvocation(CMTTxInterceptor.java:239)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.remote.EJBRemoteTransactionPropagatingInterceptor.processInvocation(EJBRemoteTransactionPropagatingInterceptor.java:79)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.CurrentInvocationContextInterceptor.processInvocation(CurrentInvocationContextInterceptor.java:41)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.invocationmetrics.WaitTimeInterceptor.processInvocation(WaitTimeInterceptor.java:43)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.security.SecurityContextInterceptor.processInvocation(SecurityContextInterceptor.java:100)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.ShutDownInterceptorFactory$1.processInvocation(ShutDownInterceptorFactory.java:64)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.deployment.processors.EjbSuspendInterceptor.processInvocation(EjbSuspendInterceptor.java:53)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.LoggingInterceptor.processInvocation(LoggingInterceptor.java:66)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ee.component.NamespaceContextInterceptor.processInvocation(NamespaceContextInterceptor.java:50)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.AdditionalSetupInterceptor.processInvocation(AdditionalSetupInterceptor.java:54)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.ContextClassLoaderInterceptor.processInvocation(ContextClassLoaderInterceptor.java:64)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:634)
+	at org.jboss.invocation.AccessCheckingInterceptor.processInvocation(AccessCheckingInterceptor.java:61)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+	at org.jboss.invocation.PrivilegedWithCombinerInterceptor.processInvocation(PrivilegedWithCombinerInterceptor.java:80)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+	at org.jboss.as.ee.component.ViewService$View.invoke(ViewService.java:195)
+	at org.jboss.as.ejb3.remote.protocol.versionone.MethodInvocationMessageHandler.invokeMethod(MethodInvocationMessageHandler.java:331)
+	at org.jboss.as.ejb3.remote.protocol.versionone.MethodInvocationMessageHandler.access$100(MethodInvocationMessageHandler.java:69)
+	at org.jboss.as.ejb3.remote.protocol.versionone.MethodInvocationMessageHandler$1.run(MethodInvocationMessageHandler.java:202)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:320)
+Caused by: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: citationdb is not mapped [SELECT c FROM citationdb c WHERE c.title='WSFAggressor: an extensible web service framework attacking tool']
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1750)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1677)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1683)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:331)
+	at org.jboss.as.jpa.container.AbstractEntityManager.createQuery(AbstractEntityManager.java:445)
+	at ejbs.EJBServCit.getCitationChicagoList(EJBServCit.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.jboss.as.ee.component.ManagedReferenceMethodInterceptor.processInvocation(ManagedReferenceMethodInterceptor.java:52)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.doMethodInterception(Jsr299BindingsInterceptor.java:82)
+	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.processInvocation(Jsr299BindingsInterceptor.java:93)
+	at org.jboss.as.ee.component.interceptors.UserInterceptorFactory$1.processInvocation(UserInterceptorFactory.java:63)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.invocationmetrics.ExecutionTimeInterceptor.processInvocation(ExecutionTimeInterceptor.java:43)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.jpa.interceptor.SBInvocationInterceptor.processInvocation(SBInvocationInterceptor.java:47)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+	at org.jboss.weld.ejb.AbstractEJBRequestScopeActivationInterceptor.aroundInvoke(AbstractEJBRequestScopeActivationInterceptor.java:73)
+	at org.jboss.as.weld.ejb.EjbRequestScopeActivationInterceptor.processInvocation(EjbRequestScopeActivationInterceptor.java:83)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ee.concurrent.ConcurrentContextInterceptor.processInvocation(ConcurrentContextInterceptor.java:45)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.InitialInterceptor.processInvocation(InitialInterceptor.java:21)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+	at org.jboss.as.ee.component.interceptors.ComponentDispatcherInterceptor.processInvocation(ComponentDispatcherInterceptor.java:52)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.component.interceptors.NonPooledEJBComponentInstanceAssociatingInterceptor.processInvocation(NonPooledEJBComponentInstanceAssociatingInterceptor.java:59)
+	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:275)
+	... 41 more
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: citationdb is not mapped [SELECT c FROM citationdb c WHERE c.title='WSFAggressor: an extensible web service framework attacking tool']
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:96)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:120)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:234)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:158)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:131)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:93)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:167)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:301)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:236)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1836)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:328)
+	... 72 more
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: citationdb is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:189)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:109)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:95)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:338)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3678)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3567)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:708)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:564)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:301)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:249)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:278)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:206)
+	... 80 more
+

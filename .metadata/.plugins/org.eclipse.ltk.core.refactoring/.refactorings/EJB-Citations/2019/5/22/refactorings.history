@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;Citations-EJB/ejbModule/ejbs&apos;&#x0A;- Original project: &apos;EJB-Citations&apos;&#x0A;- Destination element: &apos;Citations-EJB/ejbModule/ejbs&apos;&#x0A;- Original elements:&#x0A;     ejbs.EJBServCitRemote.java&#x0A;     ejbs.EJBServCit.java" description="Copy compilation units" destination="=Citations-EJB/ejbModule&lt;ejbs" element1="/src\/main\/java&lt;ejbs{EJBServCitRemote.java" element2="/src\/main\/java&lt;ejbs{EJBServCit.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1559155835782" units="2" version="1.0"/>
+</session>

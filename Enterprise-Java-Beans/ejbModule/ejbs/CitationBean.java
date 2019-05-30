@@ -1,0 +1,34 @@
+package ejbs;
+
+import dao.CitationChicagoDAO;
+import dao.CitationDAO;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
+
+
+@Stateless
+public class CitationBean implements CitationBeanRemote {
+
+    @PersistenceContext(name = "CatalogPersistence")
+    private EntityManager em;
+    
+    public CitationBean() {}
+
+    @Override
+    public List<CitationChicagoDAO> getCitationChicagoList(String journalTitle) {
+        Query query = em.createQuery("SELECT c FROM " + CitationDAO.class.getSimpleName() + " c WHERE c.title = :journalTitle")
+        		.setParameter("journalTitle", journalTitle);
+
+        CitationDAO cit = (CitationDAO) query.getSingleResult();
+
+        query = em.createQuery("SELECT cc FROM " +  CitationChicagoDAO.class.getSimpleName() + " cc WHERE Ligacao = :citationId")
+        		.setParameter("citationId", cit.getId());
+
+        return query.getResultList();
+    }
+
+}

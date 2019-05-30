@@ -1,0 +1,55 @@
+package ejbs;
+
+import dao.JournalDAO;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
+
+@Stateless
+public class JournalBean implements JournalBeanRemote {
+    @PersistenceContext(name = "TestPersistence")
+    private EntityManager em;
+
+    @Override
+    public List<String> allTitles() {
+        Query query = em.createQuery("SELECT s FROM " + JournalDAO.class.getSimpleName() + " s");
+
+        @SuppressWarnings("unchecked")
+        List<JournalDAO> journals = (List<JournalDAO>) query.getResultList();
+        List<String> titles = new ArrayList<>();
+
+        journals.forEach(j -> titles.add(j.getTitle()));
+
+        return titles;
+    }
+
+    @Override
+    public List<JournalDAO> allJournals() {
+        Query query = em.createQuery("SELECT s FROM " + JournalDAO.class.getSimpleName() + " s");
+
+        return query.getResultList();
+    }
+
+    @Override
+    public JournalDAO infoJournal(String title) {
+
+        Query query = em.createQuery("SELECT s FROM " + JournalDAO.class.getSimpleName() + " s WHERE s.title = :journalTitle")
+        		.setParameter("journalTitle", title);
+
+        return (JournalDAO) query.getSingleResult();
+    }
+
+    @Override
+    public List<JournalDAO> allJournalsOrdered(String attribute, String order) {
+        Query query = em.createQuery("SELECT s FROM " + JournalDAO.class.getSimpleName() + " s ORDER BY s. :attribute :order")
+        		.setParameter("attribute", attribute)
+        		.setParameter("order", order);
+
+        return query.getResultList();
+    }
+
+}

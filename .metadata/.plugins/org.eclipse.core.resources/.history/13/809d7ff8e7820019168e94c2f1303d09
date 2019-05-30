@@ -1,0 +1,311 @@
+package service;
+
+import dao.CitationChicagoDAO;
+import ejbs.CitationBeanRemote;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import artifact.JournalsWeb;
+import artifact.JournalsWebService;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+@WebServlet("/catalog")
+public class CatalogShower extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    private JournalsWebService journalsWebService = new JournalsWebService();
+    private JournalsWeb journalsWeb = journalsWebService.getJournalsWebPort();
+
+    private List<String> journalTitles = journalsWeb.allTitles();
+    private String[] journalFields = {"Title", "Authors", "Date", "Conference", "Journal", "Volume", "Issue",
+            "Pages", "Publisher", "Description", "Number of Citations", "Scholar Articles"};
+
+    private void onePubTitulo(HttpServletRequest request, String pubTitle) {
+        request.setAttribute("publicationTitles", Arrays.asList(pubTitle));
+    }
+
+    private void onePubFlag(HttpServletRequest request) {
+        request.setAttribute("flagNewPub", Arrays.asList(0));
+    }
+
+    // METODO PARA TRATAR TODA A INFORMACAO DE TODAS AS PUBLICACOES JUNTAS (ORDENADAS OU NAO)
+    private List<String> allPubInfo(HttpServletRequest request, List<Publicacao> publicacoesTudo, String ordenado) {
+        List<String> publicacoesInfo = new ArrayList<String>();
+        List<Integer> flagNovaPublicacao = new ArrayList<Integer>();
+
+        // Lista de titulos de todas as publicacoes (SO USADO EM PUBLICACOES ORDENADAS)
+        List<String> pubTitulos = new ArrayList<String>();
+
+        int flag = 0;
+
+        // Adicionar info de cada publicacao por ordem a lista, para
+        // sincronizar com JSP
+        for (int i = 0; i < publicacoesTudo.size(); i++) {
+            Publicacao pubActual = publicacoesTudo.get(i);
+
+            adicionarInfo(publicacoesInfo, pubActual);
+            flagNovaPublicacao.add(flag);
+            flag = flag + 12;
+
+            // (SO USADO EM PUBLICACOES ORDENADAS)
+            if (ordenado.equals("ordenado")) {
+                pubTitulos.add(pubActual.getTitle());
+            }
+        }
+
+        request.setAttribute("flagNewPub", flagNovaPublicacao);
+        request.setAttribute("publicationInfo", publicacoesInfo);
+
+        // (SO USADO EM PUBLICACOES ORDENADAS)
+        if (ordenado.equals("ordenado")) {
+            request.setAttribute("publicationTitles", pubTitulos);
+        }
+
+        // (SO USADO EM PUBLICACOES ORDENADAS)
+        return pubTitulos;
+    }
+
+    // METODO PARA TRATAR TODA A INFORMACAO DE PUBLICACAO UNICA
+    private void onePubInfo(HttpServletRequest request, String pubTitulo, WSPublications wsp) {
+        List<String> publicacoesInfo = new ArrayList<String>();
+        Publicacao pub = wsp.infoPublicacao(pubTitulo);
+
+        adicionarInfo(publicacoesInfo, pub);
+        request.setAttribute("publicationInfo", publicacoesInfo);
+    }
+
+    // METODO PARA ADICIONAR TODA A INFORMACAO DETALHADA A PUBLICACAO (SEM CITACOES)
+    private void adicionarInfo(List<String> publicacoesInfo, Publicacao pubActual) {
+        publicacoesInfo.add(pubActual.getTitle());
+        publicacoesInfo.add(pubActual.getAuthors());
+        publicacoesInfo.add(pubActual.getDate());
+        publicacoesInfo.add(pubActual.getConference());
+        publicacoesInfo.add(pubActual.getJournal());
+        publicacoesInfo.add(pubActual.getVolume());
+        publicacoesInfo.add(pubActual.getIssue());
+        publicacoesInfo.add(pubActual.getPages());
+        publicacoesInfo.add(pubActual.getPublisher());
+        publicacoesInfo.add(pubActual.getDescription() + "...");
+        publicacoesInfo.add("" + pubActual.getNCitations());
+        publicacoesInfo.add(pubActual.getScholarArtic());
+    }
+
+    // METODO PARA TRATAR CITACOES DAS PUBLICACOES EM CAUSA
+    private void tratarCitacoes(String pubTitulo, List<String> pubTitulos, String opcaoPub, HttpServletRequest request) {
+        try {
+            CitationBeanRemote ejbCit = (CitationBeanRemote) InitialContext.doLookup("java:jboss/exported/EJB-Citations/EJBServCit!ejbs.CitationBeanRemote");
+
+            // Lista para armazenar citacoes de cada publicacao
+            List<String> publicationCitations = new ArrayList<String>();
+
+            // Lista para armazenar numero de citacoes que cada publicacao
+            // tem, comecando com um valor nulo
+            List<Integer> flagNovasCitacoes = new ArrayList<Integer>();
+            flagNovasCitacoes.add(0);
+
+            // Diferenca entre ser uma unica Publicacao ou todas as Publicacoes
+            if (opcaoPub.equals("pubUnica")) {
+                infoCitacao(ejbCit, pubTitulo, publicationCitations, flagNovasCitacoes);
+            } else if (opcaoPub.equals("todasPubs")) {
+                for (int i = 0; i < pubTitulos.size(); i++) {
+                    String tituloActual = pubTitulos.get(i);
+                    infoCitacao(ejbCit, tituloActual, publicationCitations, flagNovasCitacoes);
+                }
+            }
+
+            request.setAttribute("flagNewCit", flagNovasCitacoes);
+            request.setAttribute("listCitations", publicationCitations);
+
+        } catch (NamingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    // Metodo para adicionar info de cada Citacao associada a uma Publicacao (chamado pelo metodo tratarCitacoes)
+    private void infoCitacao(CitationBeanRemote ejbCit, String pubTitulo, List<String> publicationCitations, List<Integer> flagNovasCitacoes) {
+        List<CitationChicagoDAO> publicacoesCit = ejbCit.getCitationChicagoList(pubTitulo);
+
+        for (int i = 0; i < publicacoesCit.size(); i++) {
+            String citacao = publicacoesCit.get(i).getCitationText()
+                    + "<br/><span style='color: blue'>- Date: </span>" + publicacoesCit.get(i).getCitationDate();
+            publicationCitations.add(citacao);
+        }
+        flagNovasCitacoes.add(publicacoesCit.size());
+    }
+
+    // GET
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+
+        // APRESENTAR LISTA DE TITULOS, CONFORME ENUNCIADO
+        List<String> myList = publicacoesTitulos;
+        request.setAttribute("myListOfTitles", myList);
+        request.getRequestDispatcher("/display.jsp").forward(request, response);
+    }
+
+    // POST
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+
+        // All publications, detailed info (without citations)
+        if (request.getParameter("action1") != null) {
+            request.setAttribute("operationDone", "All publications, detailed info (without citations)");
+
+            // Negar apresentacao da tabela com citacoes
+            request.setAttribute("infoOption", 2);
+
+            // Lista de titulos de todas as publicacoes
+            request.setAttribute("publicationTitles", publicacoesTitulos);
+
+            // Lista de campos cuja informacao deve ser apresentada
+            request.setAttribute("publicationFields", publicacoesCampos);
+
+            // Lista de informacao detalhada de cada publicacao
+            List<Publicacao> publicacoesTudo = wsp.allPublicacoes();
+            allPubInfo(request, publicacoesTudo, "naoordenado");
+
+            request.getRequestDispatcher("/display2.jsp").forward(request, response);
+        }
+
+        // One publication, detailed info (without citations)
+        else if (request.getParameter("action2") != null & request.getParameter("action21") != null) {
+            request.setAttribute("operationDone", "One publication, detailed info (without citations)");
+
+            // Negar apresentacao da tabela com citacoes
+            request.setAttribute("infoOption", 2);
+
+            // Titulo de publicacao
+            String pubTitulo = request.getParameter("action2");
+            onePubTitulo(request, pubTitulo);
+
+            // Lista de campos cuja informacao deve ser apresentada
+            request.setAttribute("publicationFields", publicacoesCampos);
+
+            // Adicionar flagNovaPublicacao
+            onePubFlag(request);
+
+            // Info de publicacao
+            onePubInfo(request, pubTitulo, wsp);
+
+            request.getRequestDispatcher("/display2.jsp").forward(request, response);
+        }
+
+        // One publication, all citations
+        else if (request.getParameter("action3") != null & request.getParameter("action31") != null) {
+            request.setAttribute("operationDone", "One publication, all citations");
+
+            // Validar apresentacao da tabela com citacoes
+            request.setAttribute("infoOption", 1);
+
+            // Titulo de publicacao
+            String pubTitulo = request.getParameter("action3");
+            onePubTitulo(request, pubTitulo);
+
+            // Lista de campos cuja informacao deve ser apresentada
+            String[] camposEscolhidos = {"Title", "Number of Citations"};
+            request.setAttribute("publicationFields", camposEscolhidos);
+
+            // Adicionar flagNovaPublicacao
+            onePubFlag(request);
+
+            // Info de publicacao
+            List<String> publicacoesInfo = new ArrayList<String>();
+            Publicacao pub = wsp.infoPublicacao(pubTitulo);
+
+            publicacoesInfo.add(pub.getTitle());
+            publicacoesInfo.add("" + pub.getNCitations());
+
+            request.setAttribute("publicationInfo", publicacoesInfo);
+
+            // Citacoes de publicacao
+            tratarCitacoes(pubTitulo, null, "pubUnica", request);
+
+            request.getRequestDispatcher("/display2.jsp").forward(request, response);
+        }
+
+        // All publications, all info
+        else if (request.getParameter("action4") != null) {
+            request.setAttribute("operationDone", "All publications, all info");
+
+            // Validar apresentacao da tabela com citacoes
+            request.setAttribute("infoOption", 1);
+
+            // Lista de titulos de todas as publicacoes
+            request.setAttribute("publicationTitles", publicacoesTitulos);
+
+            // Lista de campos cuja informacao deve ser apresentada
+            request.setAttribute("publicationFields", publicacoesCampos);
+
+            // Lista de informacao detalhada de cada publicacao
+            List<Publicacao> publicacoesTudo = wsp.allPublicacoes();
+            allPubInfo(request, publicacoesTudo, "naoordenado");
+
+            // Citacoes de publicacao
+            tratarCitacoes(null, publicacoesTitulos, "todasPubs", request);
+
+            request.getRequestDispatcher("/display2.jsp").forward(request, response);
+        }
+
+        // All publications, all info, by attribute
+        else if (request.getParameter("action51") != null & request.getParameter("action52") != null
+                & request.getParameter("action53") != null) {
+            request.setAttribute("operationDone", "All publications, all info, by attribute");
+
+            // Validar apresentacao da tabela com citacoes
+            request.setAttribute("infoOption", 1);
+
+            // Lista de campos cuja informacao deve ser apresentada
+            request.setAttribute("publicationFields", publicacoesCampos);
+
+            // Lista de informacao detalhada de cada publicacao, por ordem
+            String atributoEscolhido = request.getParameter("action51");
+            String ordemEscolhida = request.getParameter("action52");
+
+            List<Publicacao> publicacoesTudo = wsp.allPublicacoesordenadas(atributoEscolhido, ordemEscolhida);
+            List<String> pubTitulos = allPubInfo(request, publicacoesTudo, "ordenado");
+
+            // Citacoes de publicacao
+            tratarCitacoes(null, pubTitulos, "todasPubs", request);
+
+            request.getRequestDispatcher("/display2.jsp").forward(request, response);
+        }
+
+        // One publication, all info
+        else if (request.getParameter("action6") != null & request.getParameter("action61") != null) {
+            request.setAttribute("operationDone", "One publication, all info");
+
+            // Validar apresentacao da tabela com citacoes
+            request.setAttribute("infoOption", 1);
+
+            // Titulo de publicacao
+            String pubTitulo = request.getParameter("action6");
+            onePubTitulo(request, pubTitulo);
+
+            // Lista de campos cuja informacao deve ser apresentada
+            request.setAttribute("publicationFields", publicacoesCampos);
+
+            // Adicionar flagNovaPublicacao
+            onePubFlag(request);
+
+            // Info de publicacao
+            onePubInfo(request, pubTitulo, wsp);
+
+            // Citacoes de publicacao
+            tratarCitacoes(pubTitulo, null, "pubUnica", request);
+
+            request.getRequestDispatcher("/display2.jsp").forward(request, response);
+        }
+    }
+}

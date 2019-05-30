@@ -1,0 +1,38 @@
+package service;
+
+import ejbs.JournalBeanRemote;
+
+import javax.ejb.EJB;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+
+import dao.JournalDAO;
+
+import java.util.List;
+
+@WebService
+public class WS_Publications {
+
+    @EJB
+    private JournalBeanRemote ejb;
+
+    @WebMethod
+    public List<String> allTitles() {
+        return ejb.allTitles();
+    }
+
+    @WebMethod
+    public List<JournalDAO> allJournals() {
+        return ejb.allJournals();
+    }
+
+    @WebMethod
+    public JournalDAO infoJournal(String title) {
+        return ejb.infoJournal(title);
+    }
+
+    @WebMethod
+    public List<JournalDAO> allJournalsOrdered(String attribute, String order) {
+        return ejb.allJournalsOrdered(attribute, order);
+    }
+}

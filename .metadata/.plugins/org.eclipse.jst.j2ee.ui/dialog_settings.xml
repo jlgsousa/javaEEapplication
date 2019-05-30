@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="true" key="J2EE_EXPORT_OVERWRITE"/>
+	<item value="false" key="J2EE_EXPORT_SOURCE"/>
+	<list key="J2EE_EXPORT_JST_EJB">
+		<item value="/Users/joaosousa/Documents/workspace/catalog-loader2/lib/Enterprise-Java-Beans.jar"/>
+		<item value="/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/deployments/Journals-EJB.jar"/>
+		<item value="/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/deployments/Citations-EJB.jar"/>
+		<item value="/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/deployments/SimpleEjb.jar"/>
+		<item value="/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/bin/client/SimpleEjb.jar"/>
+	</list>
+	<list key="J2EE_IMPORT_APP_CLIENT">
+		<item value="/Users/joaosousa/Desktop/Programacoes/Java/UC/Cycles/out/production/Cycles/GolfGame.jar"/>
+	</list>
+	<list key="J2EE_EXPORT_JST_EAR">
+		<item value="/Users/joaosousa/Desktop/Programacoes/Java/UC/JavaApps/javaIntermediateApps/enterpriseApplication/wildfly-9.0.2.Final/standalone/deployments/DemoEAR.ear"/>
+	</list>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="WildFly 9.x Runtime"/>
+		<item value="NULL_RUNTIME"/>
+	</list>
+</section>

@@ -1,0 +1,187 @@
+
+package artifact;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the artifact package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _AllJournalsOrderedResponse_QNAME = new QName("http://service/", "allJournalsOrderedResponse");
+    private final static QName _InfoJournal_QNAME = new QName("http://service/", "infoJournal");
+    private final static QName _InfoJournalResponse_QNAME = new QName("http://service/", "infoJournalResponse");
+    private final static QName _AllTitlesResponse_QNAME = new QName("http://service/", "allTitlesResponse");
+    private final static QName _AllJournalsOrdered_QNAME = new QName("http://service/", "allJournalsOrdered");
+    private final static QName _AllJournalsResponse_QNAME = new QName("http://service/", "allJournalsResponse");
+    private final static QName _AllJournals_QNAME = new QName("http://service/", "allJournals");
+    private final static QName _AllTitles_QNAME = new QName("http://service/", "allTitles");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: artifact
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link AllJournals }
+     * 
+     */
+    public AllJournals createAllJournals() {
+        return new AllJournals();
+    }
+
+    /**
+     * Create an instance of {@link AllJournalsResponse }
+     * 
+     */
+    public AllJournalsResponse createAllJournalsResponse() {
+        return new AllJournalsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AllJournalsOrdered }
+     * 
+     */
+    public AllJournalsOrdered createAllJournalsOrdered() {
+        return new AllJournalsOrdered();
+    }
+
+    /**
+     * Create an instance of {@link AllTitlesResponse }
+     * 
+     */
+    public AllTitlesResponse createAllTitlesResponse() {
+        return new AllTitlesResponse();
+    }
+
+    /**
+     * Create an instance of {@link InfoJournal }
+     * 
+     */
+    public InfoJournal createInfoJournal() {
+        return new InfoJournal();
+    }
+
+    /**
+     * Create an instance of {@link InfoJournalResponse }
+     * 
+     */
+    public InfoJournalResponse createInfoJournalResponse() {
+        return new InfoJournalResponse();
+    }
+
+    /**
+     * Create an instance of {@link AllJournalsOrderedResponse }
+     * 
+     */
+    public AllJournalsOrderedResponse createAllJournalsOrderedResponse() {
+        return new AllJournalsOrderedResponse();
+    }
+
+    /**
+     * Create an instance of {@link AllTitles }
+     * 
+     */
+    public AllTitles createAllTitles() {
+        return new AllTitles();
+    }
+
+    /**
+     * Create an instance of {@link JournalDAO }
+     * 
+     */
+    public JournalDAO createJournalDAO() {
+        return new JournalDAO();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AllJournalsOrderedResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "allJournalsOrderedResponse")
+    public JAXBElement<AllJournalsOrderedResponse> createAllJournalsOrderedResponse(AllJournalsOrderedResponse value) {
+        return new JAXBElement<AllJournalsOrderedResponse>(_AllJournalsOrderedResponse_QNAME, AllJournalsOrderedResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InfoJournal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "infoJournal")
+    public JAXBElement<InfoJournal> createInfoJournal(InfoJournal value) {
+        return new JAXBElement<InfoJournal>(_InfoJournal_QNAME, InfoJournal.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InfoJournalResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "infoJournalResponse")
+    public JAXBElement<InfoJournalResponse> createInfoJournalResponse(InfoJournalResponse value) {
+        return new JAXBElement<InfoJournalResponse>(_InfoJournalResponse_QNAME, InfoJournalResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AllTitlesResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "allTitlesResponse")
+    public JAXBElement<AllTitlesResponse> createAllTitlesResponse(AllTitlesResponse value) {
+        return new JAXBElement<AllTitlesResponse>(_AllTitlesResponse_QNAME, AllTitlesResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AllJournalsOrdered }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "allJournalsOrdered")
+    public JAXBElement<AllJournalsOrdered> createAllJournalsOrdered(AllJournalsOrdered value) {
+        return new JAXBElement<AllJournalsOrdered>(_AllJournalsOrdered_QNAME, AllJournalsOrdered.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AllJournalsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "allJournalsResponse")
+    public JAXBElement<AllJournalsResponse> createAllJournalsResponse(AllJournalsResponse value) {
+        return new JAXBElement<AllJournalsResponse>(_AllJournalsResponse_QNAME, AllJournalsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AllJournals }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "allJournals")
+    public JAXBElement<AllJournals> createAllJournals(AllJournals value) {
+        return new JAXBElement<AllJournals>(_AllJournals_QNAME, AllJournals.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AllTitles }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "allTitles")
+    public JAXBElement<AllTitles> createAllTitles(AllTitles value) {
+        return new JAXBElement<AllTitles>(_AllTitles_QNAME, AllTitles.class, null, value);
+    }
+
+}

@@ -1,0 +1,109 @@
+package main;
+
+import generated.Catalog;
+import generated.Citation;
+import generated.Publication;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
+import dao.CitationChicagoDAO;
+import dao.CitationDAO;
+import dao.JournalDAO;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CatalogDBLoader {
+
+	public static void main(String[] args) {
+		
+		System.out.println("--- Loading Catalog ---");
+		
+		try {
+
+			JAXBContext jc = JAXBContext.newInstance(Catalog.class);
+			File xmlFile = new File("src/external/files/catalog.xml");
+			Unmarshaller unmarshaller = jc.createUnmarshaller();
+
+			Catalog catalog = (Catalog) unmarshaller.unmarshal(xmlFile);
+			
+			List<JournalDAO> journalDAOList = new ArrayList<>();
+			List<CitationDAO> citationDAOList = new ArrayList<>();
+
+			List<Publication> journal = catalog.getAuthor().getPublications().getPublication();
+
+			long citationId = 0L;
+			for (Publication publication : journal) {
+
+				JournalDAO journalDAO = new JournalDAO();
+				journalDAO.setTitle(getTrimmedText(publication.getPubTitle()));
+				journalDAO.setAuthors(getTrimmedText(publication.getPubAuthors()));
+				journalDAO.setDate(getTrimmedText(publication.getPubDate()));
+				journalDAO.setConference(getTrimmedText(publication.getPubConference()));
+				journalDAO.setJournal(getTrimmedText(publication.getPubJournal()));
+				journalDAO.setVolume(getTrimmedText(publication.getPubVolume()));
+				journalDAO.setIssue(getTrimmedText(publication.getPubIssue()));
+				journalDAO.setPages(getTrimmedText(publication.getPubPages()));
+				journalDAO.setPublisher(getTrimmedText(publication.getPubPublisher()));
+				journalDAO.setDescription(getTrimmedText(publication.getPubDescription()));
+				journalDAO.setScholarArtic(getTrimmedText(publication.getPubScholarArticles()));
+				journalDAO.setCitationNumber(publication.getNCitations() != null ? publication.getNCitations().intValue() : 0);
+
+				CitationDAO citationDAO = new CitationDAO();
+
+				citationDAO.setTitle(getTrimmedText(publication.getPubTitle()));
+				citationDAO.setId(citationId++);
+
+				List<CitationChicagoDAO> citationChicagoList = new ArrayList<>();
+				List<Citation> citationList = publication.getListCitations().getCitation();
+
+				for (Citation citation : citationList) {
+
+					CitationChicagoDAO citationChicagoDAO = new CitationChicagoDAO();
+					citationChicagoDAO.setCitationDate(citation.getCitDate() != null ? citation.getCitDate().intValue() : 0);
+					citationChicagoDAO.setCitationText(getTrimmedText(citation.getCitText()));
+
+					citationChicagoList.add(citationChicagoDAO);
+				}
+
+				citationDAO.setChicago(citationChicagoList);
+				citationDAOList.add(citationDAO);
+
+				journalDAOList.add(journalDAO);
+			}
+
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("catalog-loader2");
+			EntityManager em = emf.createEntityManager();
+			EntityTransaction tx = em.getTransaction();
+
+			tx.begin();
+			journalDAOList.forEach(em::persist);
+			citationDAOList.forEach(em::persist);
+			tx.commit();
+
+			em.close();
+			emf.close();
+			
+			System.out.println("--- Loading successfull ---");
+			
+		} catch (JAXBException e) {
+			System.out.println("--- Error during catalog loading ---");
+			e.printStackTrace();
+		}
+	}
+
+	private static String getTrimmedText(String text) {
+		if (text.length() >= 255) {
+			return text.substring(0, 254);
+		} else {
+			return text;
+		}
+	}
+}
